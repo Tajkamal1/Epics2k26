@@ -18,7 +18,6 @@ const teamMembers = [
   {
     name: 'Dr. Sachikanth Dash',
     position: 'Faculty Coordinator',
-    department: 'Faculty Coordination',
     description: 'Overseeing faculty involvement and academic coordination for the event.',
     icon: Users,
     color: 'accent'
@@ -26,7 +25,6 @@ const teamMembers = [
   {
     name: 'Mr. Roni Das',
     position: 'Faculty Coordinator',
-    department: 'Faculty Coordination',
     description: 'Managing faculty participation and academic oversight for the event.',
     icon: Users,
     color: 'accent'
@@ -146,11 +144,7 @@ const TeamSection = () => {
               <p className="font-rajdhani text-sm text-primary/80">
                 {member.position}
               </p>
-
-              <p className="font-rajdhani text-sm text-muted-foreground mt-1">
-                {member.department}
-              </p>
-
+              
               <p className="font-rajdhani text-sm text-foreground/70 mt-3">
                 {member.description}
               </p>
@@ -200,5 +194,6 @@ const TeamSection = () => {
 };
 
 export default TeamSection;
+
 
 
