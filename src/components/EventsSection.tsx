@@ -1,4 +1,3 @@
-
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { 
@@ -119,9 +118,12 @@ const EventsSection = () => {
           </h2>
         </motion.div>
 
-        {/* Technical Events */}
+        {/* -------- TECHNICAL EVENTS (WITH ID ADDED) -------- */}
         <div className="mb-20">
-          <h3 className="font-orbitron text-2xl font-bold mb-6">
+          <h3 
+            id="technical-events"
+            className="font-orbitron text-2xl font-bold mb-6"
+          >
             Technical Events
           </h3>
 
@@ -137,9 +139,12 @@ const EventsSection = () => {
           </div>
         </div>
 
-        {/* Non-Technical Events */}
+        {/* -------- NON TECHNICAL EVENTS (WITH ID ADDED) -------- */}
         <div className="mb-20">
-          <h3 className="font-orbitron text-2xl font-bold mb-6">
+          <h3 
+            id="non-technical-events"
+            className="font-orbitron text-2xl font-bold mb-6"
+          >
             Non-Technical Events
           </h3>
 
@@ -155,8 +160,7 @@ const EventsSection = () => {
           </div>
         </div>
 
-        {/* ---- NEW SEPARATE E-SPORTS SECTION ---- */}
-
+        {/* -------- SEPARATE E-SPORTS SECTION -------- */}
         <div>
           <h3 className="font-orbitron text-2xl font-bold mb-6">
             E-Sports
@@ -180,4 +184,3 @@ const EventsSection = () => {
 };
 
 export default EventsSection;
-
