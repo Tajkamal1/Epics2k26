@@ -61,76 +61,149 @@ const TeamSection = () => {
   };
 
   return (
-    <section id="team" className="relative py-24 sm:py-32 overflow-hidden" ref={ref}>
-      <div className="container relative z-10 px-6">
+  <section id="team" className="relative py-24 sm:py-32 overflow-hidden" ref={ref}>
+    <div className="container relative z-10 px-6">
+      
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-16 sm:mb-20"
+      >
+        <span className="font-rajdhani text-primary tracking-widest uppercase text-sm mb-4 block">
+          Meet Our Team
+        </span>
         
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16 sm:mb-20"
-        >
-          <span className="font-rajdhani text-primary tracking-widest uppercase text-sm mb-4 block">
-            Meet Our Team
-          </span>
-          
-          <h2 className="font-orbitron text-3xl sm:text-4xl md:text-5xl font-bold text-gradient-gold glow-gold mb-6">
-            Behind the Success
-          </h2>
-          
-          <p className="max-w-2xl mx-auto font-rajdhani text-lg text-foreground/70">
-            The dedicated team that makes the event possible through expertise and collaboration.
-          </p>
-        </motion.div>
+        <h2 className="font-orbitron text-3xl sm:text-4xl md:text-5xl font-bold text-gradient-gold glow-gold mb-6">
+          Behind the Success
+        </h2>
+        
+        <p className="max-w-2xl mx-auto font-rajdhani text-lg text-foreground/70">
+          The dedicated team that makes the event possible through expertise and collaboration.
+        </p>
+      </motion.div>
 
-        {/* HOD Section */}
-        <div className="mb-20">
-          <h3 className="text-2xl font-bold mb-6">HOD Cybersecurity</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {groupedMembers['HOD Cybersecurity'].map((member, index) => (
-              <div key={index} className="p-6 border rounded-xl text-center">
-                <h4 className="text-xl font-bold">{member.name}</h4>
-                <p className="text-sm">{member.position}</p>
-                <p className="text-sm">{member.department}</p>
-                <p className="text-sm mt-2">{member.description}</p>
+      {/* HOD Section */}
+      <div className="mb-20">
+        <h3 className="font-orbitron text-2xl font-bold text-primary mb-8 text-center">
+          HOD Cybersecurity
+        </h3>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {groupedMembers['HOD Cybersecurity'].map((member, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: index * 0.2 }}
+              className="card-cyber p-6 rounded-xl border border-primary/20 bg-secondary/30 text-center"
+            >
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/30 flex items-center justify-center">
+                <member.icon className="w-7 h-7 text-primary" />
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Faculty Coordinators */}
-        <div className="mb-20">
-          <h3 className="text-2xl font-bold mb-6">Faculty Coordinators</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {groupedMembers['Faculty Coordinators'].map((member, index) => (
-              <div key={index} className="p-6 border rounded-xl text-center">
-                <h4 className="text-xl font-bold">{member.name}</h4>
-                <p className="text-sm">{member.position}</p>
-                <p className="text-sm">{member.department}</p>
-                <p className="text-sm mt-2">{member.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+              <h4 className="font-space text-xl font-bold text-foreground">
+                {member.name}
+              </h4>
 
-        {/* Student Coordinators */}
-        <div>
-          <h3 className="text-2xl font-bold mb-6">Student Coordinators</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {groupedMembers['Student Coordinators'].map((member, index) => (
-              <div key={index} className="p-6 border rounded-xl text-center">
-                <h4 className="text-xl font-bold">{member.name}</h4>
-                <p className="text-sm">{member.position}</p>
-                <p className="text-sm">{member.department}</p>
-                <p className="text-sm mt-2">{member.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+              <p className="font-rajdhani text-sm text-primary/80">
+                {member.position}
+              </p>
 
+              <p className="font-rajdhani text-sm text-muted-foreground mt-1">
+                {member.department}
+              </p>
+
+              <p className="font-rajdhani text-sm text-foreground/70 mt-3">
+                {member.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </section>
-  );
+
+      {/* Faculty Coordinators */}
+      <div className="mb-20">
+        <h3 className="font-orbitron text-2xl font-bold text-primary mb-8 text-center">
+          Faculty Coordinators
+        </h3>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {groupedMembers['Faculty Coordinators'].map((member, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: index * 0.2 }}
+              className="card-cyber p-6 rounded-xl border border-primary/20 bg-secondary/30 text-center"
+            >
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/30 flex items-center justify-center">
+                <member.icon className="w-7 h-7 text-primary" />
+              </div>
+
+              <h4 className="font-space text-xl font-bold text-foreground">
+                {member.name}
+              </h4>
+
+              <p className="font-rajdhani text-sm text-primary/80">
+                {member.position}
+              </p>
+
+              <p className="font-rajdhani text-sm text-muted-foreground mt-1">
+                {member.department}
+              </p>
+
+              <p className="font-rajdhani text-sm text-foreground/70 mt-3">
+                {member.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Student Coordinators */}
+      <div>
+        <h3 className="font-orbitron text-2xl font-bold text-primary mb-8 text-center">
+          Student Coordinators
+        </h3>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {groupedMembers['Student Coordinators'].map((member, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: index * 0.2 }}
+              className="card-cyber p-6 rounded-xl border border-primary/20 bg-secondary/30 text-center"
+            >
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/30 flex items-center justify-center">
+                <member.icon className="w-7 h-7 text-primary" />
+              </div>
+
+              <h4 className="font-space text-xl font-bold text-foreground">
+                {member.name}
+              </h4>
+
+              <p className="font-rajdhani text-sm text-primary/80">
+                {member.position}
+              </p>
+
+              <p className="font-rajdhani text-sm text-muted-foreground mt-1">
+                {member.department}
+              </p>
+
+              <p className="font-rajdhani text-sm text-foreground/70 mt-3">
+                {member.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+);
 };
 
 export default TeamSection;
+
