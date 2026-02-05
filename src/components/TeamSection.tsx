@@ -35,7 +35,6 @@ const teamMembers = [
   {
     name: 'M Diwakar',
     position: 'Student Coordinator',
-    department: 'Student Coordination',
     description: 'Contact: 7207058526',
     icon: GraduationCap,
     color: 'primary'
@@ -43,7 +42,6 @@ const teamMembers = [
   {
     name: 'K. Priya',
     position: 'Student Coordinator',
-    department: 'Student Coordination',
     description: 'Contact: +91 98595 11999',
     icon: GraduationCap,
     color: 'secondary'
@@ -188,10 +186,6 @@ const TeamSection = () => {
                 {member.position}
               </p>
 
-              <p className="font-rajdhani text-sm text-muted-foreground mt-1">
-                {member.department}
-              </p>
-
               <p className="font-rajdhani text-sm text-foreground/70 mt-3">
                 {member.description}
               </p>
@@ -206,4 +200,5 @@ const TeamSection = () => {
 };
 
 export default TeamSection;
+
 
