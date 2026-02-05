@@ -137,7 +137,7 @@ const EventsSection = () => {
             ))}
           </div>
         </div>
-        <div>id="non-technical-events"</div>
+        <div id="non-technical-events"></div>
         {/* -------- NON TECHNICAL EVENTS (WITH ID ADDED) -------- */}
         <div className="mb-20">
           <h3 
@@ -182,5 +182,6 @@ const EventsSection = () => {
 };
 
 export default EventsSection;
+
 
 
