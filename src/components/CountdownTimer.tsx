@@ -51,7 +51,7 @@ const CountdownTimer = () => {
         Event Starts In
       </h3>
       
-      <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
         {timeUnits.map((unit, index) => (
           <motion.div
             key={unit.label}
@@ -109,3 +109,4 @@ const CountdownTimer = () => {
 };
 
 export default CountdownTimer;
+
