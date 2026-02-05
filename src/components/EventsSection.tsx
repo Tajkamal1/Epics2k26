@@ -113,7 +113,7 @@ const EventsSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16 sm:mb-20"
         >
-          <h2 className="font-orbitron text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+          <h2  id="technical-events" className="font-orbitron text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
             Event Lineup
           </h2>
         </motion.div>
@@ -121,7 +121,6 @@ const EventsSection = () => {
         {/* -------- TECHNICAL EVENTS (WITH ID ADDED) -------- */}
         <div className="mb-20">
           <h3 
-            id="technical-events"
             className="font-orbitron text-2xl font-bold mb-6"
           >
             Technical Events
@@ -184,3 +183,4 @@ const EventsSection = () => {
 };
 
 export default EventsSection;
+
