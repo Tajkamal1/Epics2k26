@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://epics2026.example.com/sitemap.xml
