@@ -1,3 +1,4 @@
+
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { 
@@ -68,7 +69,7 @@ const nonTechnicalEvents = [
   },
   {
     title: 'Chill & Thril',
-    description: 'Fun filled event with exciting games.',
+    description: 'Fun filled event with exciting games and activities.',
     coordinator: 'Akhil - +91 81212 42095',
     icon: Star,
     registerUrl: 'https://docs.google.com/forms',
@@ -78,22 +79,22 @@ const nonTechnicalEvents = [
 const eSportsEvents = [
   {
     title: 'Free Fire',
-    description: 'Battle it out in Free Fire.',
-    coordinator: 'SaiNath - 9347863704 , Uday Kiran - 9392885747',
+    description: 'Battle it out in the ultimate Free Fire tournament.',
+    coordinator: 'SaiNath - +91 93478 63704 , Uday Kiran - +91 93928 85747',
     icon: Gamepad2,
     registerUrl: 'https://docs.google.com/forms',
   },
   {
     title: 'PUBG',
-    description: 'Compete in PUBG tournament.',
-    coordinator: 'Sivaraj Kumar - 8639516459',
+    description: 'Compete in intense PUBG matches and prove your squad.',
+    coordinator: 'Sivaraj Kumar - +91 86395 16459',
     icon: Gamepad2,
     registerUrl: 'https://docs.google.com/forms',
   },
   {
     title: 'Ludo',
-    description: 'Strategic Ludo competition.',
-    coordinator: 'Shafiulla - 7997218818',
+    description: 'A fun and strategic Ludo competition.',
+    coordinator: 'Shafiulla - +91 79972 18818',
     icon: Gamepad2,
     registerUrl: 'https://docs.google.com/forms',
   },
@@ -101,47 +102,74 @@ const eSportsEvents = [
 
 const EventsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section className="relative py-24" ref={ref}>
-      <div className="container px-6">
+    <section id="events" className="relative py-24 sm:py-32 overflow-hidden" ref={ref}>
+      <div className="container relative z-10 px-6">
 
-        {/* TECHNICAL EVENTS */}
-        <div id="technical-events" className="mb-20">
-          <h3 className="text-2xl font-bold mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 sm:mb-20"
+        >
+          <h2 className="font-orbitron text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+            Event Lineup
+          </h2>
+        </motion.div>
+
+        {/* Technical Events */}
+        <div className="mb-20">
+          <h3 className="font-orbitron text-2xl font-bold mb-6">
             Technical Events
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {technicalEvents.map(event => (
-              <EventCard key={event.title} {...event} />
+            {technicalEvents.map((event, index) => (
+              <EventCard
+                key={event.title}
+                {...event}
+                category="technical"
+                index={index}
+              />
             ))}
           </div>
         </div>
 
-        {/* NON TECHNICAL EVENTS */}
-        <div id="nontechnical-events" className="mb-20">
-          <h3 className="text-2xl font-bold mb-6">
+        {/* Non-Technical Events */}
+        <div className="mb-20">
+          <h3 className="font-orbitron text-2xl font-bold mb-6">
             Non-Technical Events
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {nonTechnicalEvents.map(event => (
-              <EventCard key={event.title} {...event} />
+            {nonTechnicalEvents.map((event, index) => (
+              <EventCard
+                key={event.title}
+                {...event}
+                category="non-technical"
+                index={index}
+              />
             ))}
           </div>
         </div>
 
-        {/* E-SPORTS SECTION */}
+        {/* ---- NEW SEPARATE E-SPORTS SECTION ---- */}
+
         <div>
-          <h3 className="text-2xl font-bold mb-6">
+          <h3 className="font-orbitron text-2xl font-bold mb-6">
             E-Sports
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {eSportsEvents.map(event => (
-              <EventCard key={event.title} {...event} />
+            {eSportsEvents.map((event, index) => (
+              <EventCard
+                key={event.title}
+                {...event}
+                category="non-technical"
+                index={index}
+              />
             ))}
           </div>
         </div>
@@ -152,3 +180,4 @@ const EventsSection = () => {
 };
 
 export default EventsSection;
+
