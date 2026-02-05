@@ -4,8 +4,7 @@ import { motion } from 'framer-motion';
 const HeroSection = () => {
   const [showContent, setShowContent] = useState(false);
   const [typedText, setTypedText] = useState('');
-
-  const fullText = "EPICS 2K26";
+  const [typingComplete, setTypingComplete] = useState(false);
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -14,26 +13,32 @@ const HeroSection = () => {
     seconds: 0
   });
 
+  const fullText = 'EPICS 2K26';
+  const subtitle = 'Organized by CSE (Cyber Security) Department';
   const eventDate = new Date('2026-02-26T09:00:00');
 
-  // Typing animation effect
   useEffect(() => {
-    let index = 0;
-
-    const typingInterval = setInterval(() => {
-      setTypedText(fullText.slice(0, index + 1));
-      index++;
-
-      if (index === fullText.length) {
-        clearInterval(typingInterval);
-        setTimeout(() => setShowContent(true), 300);
-      }
-    }, 150);
-
-    return () => clearInterval(typingInterval);
+    const contentTimer = setTimeout(() => setShowContent(true), 100);
+    return () => clearTimeout(contentTimer);
   }, []);
 
-  // Countdown Timer Logic
+  useEffect(() => {
+    if (!showContent) return;
+
+    let index = 0;
+    const typingInterval = setInterval(() => {
+      if (index <= fullText.length) {
+        setTypedText(fullText.slice(0, index));
+        index++;
+      } else {
+        clearInterval(typingInterval);
+        setTypingComplete(true);
+      }
+    }, 100);
+
+    return () => clearInterval(typingInterval);
+  }, [showContent]);
+
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date();
@@ -55,8 +60,16 @@ const HeroSection = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const scrollToEvents = () => {
-    document.getElementById('events')?.scrollIntoView({
+  // -------- NEW SCROLL HANDLERS --------
+
+  const goToTechnical = () => {
+    document.getElementById('technical-events')?.scrollIntoView({
+      behavior: 'smooth'
+    });
+  };
+
+  const goToNonTechnical = () => {
+    document.getElementById('non-technical-events')?.scrollIntoView({
       behavior: 'smooth'
     });
   };
@@ -71,106 +84,97 @@ const HeroSection = () => {
       </div>
 
       <div className="container relative z-10 px-4 md:px-6 text-center">
-
-        {/* MAIN TITLE WITH TYPING EFFECT */}
-        <motion.h1
-          className="font-orbitron text-5xl md:text-8xl font-bold text-gradient-gold glow-gold mb-6"
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={showContent ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
         >
-          {typedText}
-          <span className="animate-pulse">|</span>
-        </motion.h1>
+          <h1 className="font-orbitron text-5xl md:text-8xl font-bold text-gradient-gold glow-gold mb-4">
+            {typedText}
+            {!typingComplete && <span className="text-primary">|</span>}
+          </h1>
 
-        {showContent && (
-          <>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="font-orbitron text-lg md:text-xl text-gradient-gold font-semibold mb-8"
-            >
-              One Day National Level Symposium
-            </motion.p>
+          <p className="font-rajdhani text-lg md:text-3xl text-foreground/70 tracking-widest mb-6">
+            {subtitle}
+          </p>
 
-            {/* COUNTDOWN TIMER */}
-            <div className="flex flex-wrap justify-center gap-4 mb-10">
-              {[
-                { label: 'DAYS', value: timeLeft.days },
-                { label: 'HOURS', value: timeLeft.hours },
-                { label: 'MINUTES', value: timeLeft.minutes },
-                { label: 'SECONDS', value: timeLeft.seconds }
-              ].map(item => (
-                <div
-                  key={item.label}
-                  className="
-                    px-4 py-4
-                    bg-secondary/60
-                    backdrop-blur-md
-                    border border-yellow-400/40
-                    rounded-xl
-                    shadow-[0_0_20px_rgba(255,215,0,0.25)]
-                    min-w-[90px]
-                  "
-                >
-                  <div className="font-orbitron text-3xl font-bold text-gradient-gold">
-                    {String(item.value).padStart(2, '0')}
-                  </div>
+          <p className="font-orbitron text-lg md:text-xl text-gradient-gold font-semibold mb-8">
+            One Day National Level Symposium
+          </p>
 
-                  <div className="font-rajdhani text-xs text-foreground/70 tracking-wider">
-                    {item.label}
-                  </div>
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-10 px-2 sm:px-0 mx-2 sm:mx-0">
+            {[
+              { label: 'DAYS', value: timeLeft.days },
+              { label: 'HOURS', value: timeLeft.hours },
+              { label: 'MINUTES', value: timeLeft.minutes },
+              { label: 'SECONDS', value: timeLeft.seconds }
+            ].map(item => (
+              <div
+                key={item.label}
+                className="
+                  px-3 py-3 sm:px-5 sm:py-4
+                  bg-secondary/60
+                  backdrop-blur-md
+                  border border-primary/40
+                  rounded-xl
+                  shadow-[0_0_20px_rgba(255,215,0,0.25)]
+                  min-w-[80px]
+                "
+              >
+                <div className="font-orbitron text-2xl sm:text-3xl font-bold text-gradient-gold">
+                  {String(item.value).padStart(2, '0')}
                 </div>
-              ))}
-            </div>
 
-            {/* HIGHLIGHT TEXT */}
-            <motion.div
-              animate={{
-                textShadow: [
-                  '0 0 10px rgba(255,215,0,0.4)',
-                  '0 0 25px rgba(255,215,0,0.9)',
-                  '0 0 10px rgba(255,215,0,0.4)'
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="font-orbitron text-2xl text-yellow-300 mb-8"
+                <div className="font-rajdhani text-[10px] sm:text-xs text-foreground/70 tracking-wider">
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ---------- NEW TWO BUTTONS ---------- */}
+
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+
+            <motion.button
+              onClick={goToTechnical}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="
+                px-8 sm:px-12 py-3 sm:py-4
+                font-orbitron text-lg sm:text-xl
+                bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
+                text-black
+                rounded-full
+                uppercase
+                tracking-widest
+                border border-yellow-200
+              "
             >
-              REGISTRATION OPEN
-            </motion.div>
+              Technical Events
+            </motion.button>
 
-            {/* BUTTONS */}
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={scrollToEvents}
-                className="
-                  px-10 py-3
-                  bg-gradient-to-r from-yellow-400 to-yellow-500
-                  text-black font-orbitron
-                  rounded-full
-                  tracking-wide
-                "
-              >
-                Technical Events
-              </motion.button>
+            <motion.button
+              onClick={goToNonTechnical}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="
+                px-8 sm:px-12 py-3 sm:py-4
+                font-orbitron text-lg sm:text-xl
+                bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
+                text-black
+                rounded-full
+                uppercase
+                tracking-widest
+                border border-yellow-200
+              "
+            >
+              Non-Technical Events
+            </motion.button>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={scrollToEvents}
-                className="
-                  px-10 py-3
-                  bg-gradient-to-r from-yellow-400 to-yellow-500
-                  text-black font-orbitron
-                  rounded-full
-                  tracking-wide
-                "
-              >
-                Non-Technical Events
-              </motion.button>
-            </div>
-          </>
-        )}
+          </div>
 
+        </motion.div>
       </div>
     </section>
   );
