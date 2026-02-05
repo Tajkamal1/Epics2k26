@@ -1,11 +1,8 @@
 import { useState, useEffect, memo } from 'react';
 import { motion } from 'framer-motion';
-import { Shield } from 'lucide-react';
 
 const HeroSection = () => {
-  const [showShield, setShowShield] = useState(false);
-  const [showTitle, setShowTitle] = useState(false);
-  const [showTag, setShowTag] = useState(false);
+  const [showContent, setShowContent] = useState(false);
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -17,9 +14,7 @@ const HeroSection = () => {
   const eventDate = new Date('2026-02-26T09:00:00');
 
   useEffect(() => {
-    setTimeout(() => setShowShield(true), 200);
-    setTimeout(() => setShowTitle(true), 1800);
-    setTimeout(() => setShowTag(true), 2800);
+    setTimeout(() => setShowContent(true), 300);
   }, []);
 
   useEffect(() => {
@@ -60,23 +55,10 @@ const HeroSection = () => {
 
       <div className="container relative z-10 px-4 md:px-6 text-center">
 
-        {/* SHIELD ANIMATION */}
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={showShield ? { scale: 1, opacity: 1 } : {}}
-          transition={{ duration: 1.2, type: 'spring' }}
-          className="flex justify-center mb-6"
-        >
-          <Shield
-            size={120}
-            className="text-yellow-400 drop-shadow-[0_0_25px_rgba(255,215,0,0.8)]"
-          />
-        </motion.div>
-
-        {/* EPICS TITLE */}
+        {/* MAIN TITLE */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
-          animate={showTitle ? { opacity: 1, y: 0 } : {}}
+          animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
           className="font-orbitron text-5xl md:text-8xl font-bold text-gradient-gold glow-gold mb-6"
         >
@@ -85,31 +67,11 @@ const HeroSection = () => {
 
         <motion.p
           initial={{ opacity: 0 }}
-          animate={showTitle ? { opacity: 1 } : {}}
-          className="font-orbitron text-lg md:text-xl text-gradient-gold font-semibold mb-6"
+          animate={showContent ? { opacity: 1 } : {}}
+          className="font-orbitron text-lg md:text-xl text-gradient-gold font-semibold mb-8"
         >
           One Day National Level Symposium
         </motion.p>
-
-        {/* TAG STYLE DEPARTMENT LABEL */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={showTag ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8 }}
-          className="
-            inline-flex items-center gap-3
-            px-6 py-3 mb-8
-            rounded-full
-            border border-yellow-400/50
-            bg-purple-200/20 backdrop-blur-md
-          "
-        >
-          <span className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></span>
-
-          <span className="font-rajdhani text-sm md:text-base font-semibold text-yellow-200 tracking-wide">
-            DEPARTMENT OF CSE (CYBER SECURITY)
-          </span>
-        </motion.div>
 
         {/* COUNTDOWN TIMER */}
         <div className="flex flex-wrap justify-center gap-4 mb-10">
@@ -142,7 +104,7 @@ const HeroSection = () => {
           ))}
         </div>
 
-        {/* HIGHLIGHT TEXT INSTEAD OF REGISTER BUTTON */}
+        {/* HIGHLIGHT TEXT */}
         <motion.div
           animate={{
             textShadow: [
@@ -152,12 +114,12 @@ const HeroSection = () => {
             ]
           }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="font-orbitron text-2xl text-yellow-300 mb-6"
+          className="font-orbitron text-2xl text-yellow-300 mb-8"
         >
           REGISTRATION OPEN
         </motion.div>
 
-        {/* TWO BUTTONS */}
+        {/* ONLY TWO BUTTONS */}
         <div className="flex flex-col sm:flex-row justify-center gap-6">
           <motion.button
             whileHover={{ scale: 1.05 }}
