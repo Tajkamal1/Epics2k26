@@ -71,7 +71,7 @@ const HeroSection = () => {
   };
 
   const scrollToNonTechnical = () => {
-    document.getElementById('nontechnical-events')?.scrollIntoView({
+    document.getElementById('non-technical-events')?.scrollIntoView({
       behavior: 'smooth'
     });
   };
@@ -195,3 +195,4 @@ const HeroSection = () => {
 };
 
 export default memo(HeroSection);
+
