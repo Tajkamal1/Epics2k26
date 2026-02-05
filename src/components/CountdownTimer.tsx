@@ -45,13 +45,13 @@ const CountdownTimer = () => {
   ];
 
   return (
-    <div className="w-full px-4 sm:px-6 md:px-10 max-w-[1200px] mx-auto">
+    <div className="w-full px-3 sm:px-6 md:px-10 max-w-[1200px] mx-auto">
       <div className="text-center">
         <h3 className="font-rajdhani text-lg sm:text-xl text-primary/80 mb-6 tracking-widest uppercase">
           Event Starts In
         </h3>
         
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-6 px-2 sm:px-0">
+        <div className="flex justify-center gap-2 sm:gap-4 md:gap-6 overflow-hidden">
           {timeUnits.map((unit, index) => (
             <motion.div
               key={unit.label}
@@ -60,10 +60,33 @@ const CountdownTimer = () => {
               transition={{ delay: index * 0.1 }}
               className="relative"
             >
-              <div className="timer-digit w-20 sm:w-28 md:w-32 h-24 sm:h-32 md:h-36 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
-                
+              <div
+                className="
+                  timer-digit
+                  w-[70px]
+                  xs:w-[80px]
+                  sm:w-24
+                  md:w-28
+                  lg:w-32
+
+                  h-[80px]
+                  xs:h-[90px]
+                  sm:h-28
+                  md:h-32
+                  lg:h-36
+
+                  rounded-xl 
+                  flex flex-col 
+                  items-center 
+                  justify-center 
+                  relative 
+                  overflow-hidden
+                "
+              >
+                {/* Scan line effect */}
                 <div className="absolute inset-0 scan-line opacity-50" />
                 
+                {/* Number display with animation */}
                 <AnimatePresence mode="popLayout">
                   <motion.span
                     key={unit.value}
@@ -71,19 +94,21 @@ const CountdownTimer = () => {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: 20, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="text-3xl sm:text-5xl md:text-6xl font-bold text-gradient-gold"
+                    className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gradient-gold"
                   >
                     {String(unit.value).padStart(2, '0')}
                   </motion.span>
                 </AnimatePresence>
                 
-                <span className="font-rajdhani text-xs sm:text-sm text-muted-foreground uppercase tracking-widest mt-1">
+                <span className="font-rajdhani text-[10px] sm:text-xs text-muted-foreground uppercase tracking-widest mt-1">
                   {unit.label}
                 </span>
                 
+                {/* Glow effect at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
               </div>
               
+              {/* Separator dots */}
               {index < timeUnits.length - 1 && (
                 <div className="hidden sm:flex absolute -right-3 top-1/2 -translate-y-1/2 flex-col gap-2">
                   <motion.span
