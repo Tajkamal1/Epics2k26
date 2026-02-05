@@ -50,27 +50,35 @@ const CountdownTimer = () => {
         Event Starts In
       </h3>
       
-      {/* MAIN FIX IS HERE */}
-      <div className="flex justify-center gap-1 sm:gap-3 md:gap-6">
+      {/* GRID LAYOUT INSTEAD OF FLEX */}
+      <div
+        className="
+          grid 
+          grid-cols-4
+          gap-1
+          sm:gap-3
+          md:gap-6
+          justify-items-center
+        "
+      >
         {timeUnits.map((unit, index) => (
           <motion.div
             key={unit.label}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.1 }}
-            className="relative"
+            className="relative w-full flex justify-center"
           >
             <div
               className="
                 timer-digit
-                min-w-[60px]
-                w-[22vw]
-                sm:w-20
-                md:w-28
+                w-[90%]
+                sm:w-[80px]
+                md:w-[110px]
 
                 h-[70px]
-                sm:h-24
-                md:h-32
+                sm:h-[90px]
+                md:h-[120px]
 
                 rounded-xl 
                 flex flex-col 
@@ -101,7 +109,7 @@ const CountdownTimer = () => {
               
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
             </div>
-            
+
             {index < timeUnits.length - 1 && (
               <div className="hidden sm:flex absolute -right-3 top-1/2 -translate-y-1/2 flex-col gap-2">
                 <motion.span
