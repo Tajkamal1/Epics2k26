@@ -34,7 +34,7 @@ const HeroSection = () => {
         clearInterval(typingInterval);
         setTypingComplete(true);
       }
-    }, 100);
+    }, 120);
 
     return () => clearInterval(typingInterval);
   }, [showContent]);
@@ -60,15 +60,13 @@ const HeroSection = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // -------- NEW SCROLL HANDLERS --------
-
-  const goToTechnical = () => {
+  const scrollToTechnical = () => {
     document.getElementById('technical-events')?.scrollIntoView({
       behavior: 'smooth'
     });
   };
 
-  const goToNonTechnical = () => {
+  const scrollToNonTechnical = () => {
     document.getElementById('non-technical-events')?.scrollIntoView({
       behavior: 'smooth'
     });
@@ -89,6 +87,7 @@ const HeroSection = () => {
           animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          {/* Title with typing animation */}
           <h1 className="font-orbitron text-5xl md:text-8xl font-bold text-gradient-gold glow-gold mb-4">
             {typedText}
             {!typingComplete && <span className="text-primary">|</span>}
@@ -102,7 +101,8 @@ const HeroSection = () => {
             One Day National Level Symposium
           </p>
 
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-10 px-2 sm:px-0 mx-2 sm:mx-0">
+          {/* Countdown Timer */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-10">
             {[
               { label: 'DAYS', value: timeLeft.days },
               { label: 'HOURS', value: timeLeft.hours },
@@ -131,62 +131,53 @@ const HeroSection = () => {
               </div>
             ))}
           </div>
-          
-          {/* HIGHLIGHT TEXT */}
-            <motion.div
-              animate={{
-                textShadow: [
-                  '0 0 10px rgba(255,215,0,0.4)',
-                  '0 0 25px rgba(255,215,0,0.9)',
-                  '0 0 10px rgba(255,215,0,0.4)'
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="font-orbitron text-2xl text-yellow-300 mb-8"
-            >
-              REGISTRATION OPEN
-            </motion.div>
 
-          {/* ---------- NEW TWO BUTTONS ---------- */}
+          {/* 👇 ADDED BACK - REGISTRATION OPEN HIGHLIGHT SECTION */}
+          <motion.div
+            animate={{
+              textShadow: [
+                '0 0 10px rgba(255,215,0,0.4)',
+                '0 0 25px rgba(255,215,0,0.9)',
+                '0 0 10px rgba(255,215,0,0.4)'
+              ]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="font-orbitron text-2xl text-yellow-300 mb-8"
+          >
+            REGISTRATION OPEN
+          </motion.div>
 
+          {/* Two Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-
             <motion.button
-              onClick={goToTechnical}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={scrollToTechnical}
               className="
-                px-8 sm:px-12 py-3 sm:py-4
-                font-orbitron text-lg sm:text-xl
-                bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
-                text-black
+                px-10 py-3
+                bg-gradient-to-r from-yellow-400 to-yellow-500
+                text-black font-orbitron
                 rounded-full
-                uppercase
-                tracking-widest
-                border border-yellow-200
+                tracking-wide
               "
             >
               Technical Events
             </motion.button>
 
             <motion.button
-              onClick={goToNonTechnical}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={scrollToNonTechnical}
               className="
-                px-8 sm:px-12 py-3 sm:py-4
-                font-orbitron text-lg sm:text-xl
-                bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
-                text-black
+                px-10 py-3
+                bg-gradient-to-r from-yellow-400 to-yellow-500
+                text-black font-orbitron
                 rounded-full
-                uppercase
-                tracking-widest
-                border border-yellow-200
+                tracking-wide
               "
             >
               Non-Technical Events
             </motion.button>
-
           </div>
 
         </motion.div>
@@ -196,4 +187,3 @@ const HeroSection = () => {
 };
 
 export default memo(HeroSection);
-
