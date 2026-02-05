@@ -17,6 +17,8 @@ const HeroSection = () => {
   const subtitle = 'Organized by CSE (Cyber Security) Department';
   const eventDate = new Date('2026-02-26T09:00:00');
 
+  /* ---------------- EFFECTS ---------------- */
+
   useEffect(() => {
     const contentTimer = setTimeout(() => setShowContent(true), 100);
     return () => clearTimeout(contentTimer);
@@ -60,6 +62,8 @@ const HeroSection = () => {
     return () => clearInterval(timer);
   }, []);
 
+  /* ---------------- HANDLERS ---------------- */
+
   const scrollToTechnical = () => {
     document.getElementById('technical-events')?.scrollIntoView({
       behavior: 'smooth'
@@ -67,16 +71,19 @@ const HeroSection = () => {
   };
 
   const scrollToNonTechnical = () => {
-    document.getElementById('non-technical-events')?.scrollIntoView({
+    document.getElementById('nontechnical-events')?.scrollIntoView({
       behavior: 'smooth'
     });
   };
+
+  /* ---------------- UI ---------------- */
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
+      {/* Background */}
       <div className="fixed inset-0 bg-background z-0">
         <div className="absolute inset-0 cyber-grid opacity-50" />
       </div>
@@ -87,12 +94,13 @@ const HeroSection = () => {
           animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          {/* Title with typing animation */}
-          <h1 className="font-orbitron text-5xl md:text-8xl font-bold text-gradient-gold glow-gold mb-4">
+          {/* TITLE WITH TYPING EFFECT - FORCED ONE ROW */}
+          <h1 className="font-orbitron text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-gold glow-gold mb-4 whitespace-nowrap">
             {typedText}
             {!typingComplete && <span className="text-primary">|</span>}
           </h1>
 
+          {/* Subtitle */}
           <p className="font-rajdhani text-lg md:text-3xl text-foreground/70 tracking-widest mb-6">
             {subtitle}
           </p>
@@ -101,8 +109,8 @@ const HeroSection = () => {
             One Day National Level Symposium
           </p>
 
-          {/* Countdown Timer */}
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-10">
+          {/* COUNTDOWN TIMER */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-10 px-2 sm:px-0 mx-2 sm:mx-0">
             {[
               { label: 'DAYS', value: timeLeft.days },
               { label: 'HOURS', value: timeLeft.hours },
@@ -132,7 +140,7 @@ const HeroSection = () => {
             ))}
           </div>
 
-          {/* 👇 ADDED BACK - REGISTRATION OPEN HIGHLIGHT SECTION */}
+          {/* REGISTRATION OPEN HIGHLIGHT */}
           <motion.div
             animate={{
               textShadow: [
@@ -147,7 +155,7 @@ const HeroSection = () => {
             REGISTRATION OPEN
           </motion.div>
 
-          {/* Two Buttons */}
+          {/* TWO NAVIGATION BUTTONS */}
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <motion.button
               whileHover={{ scale: 1.05 }}
