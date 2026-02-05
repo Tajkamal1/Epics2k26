@@ -131,6 +131,21 @@ const HeroSection = () => {
               </div>
             ))}
           </div>
+          
+          {/* HIGHLIGHT TEXT */}
+            <motion.div
+              animate={{
+                textShadow: [
+                  '0 0 10px rgba(255,215,0,0.4)',
+                  '0 0 25px rgba(255,215,0,0.9)',
+                  '0 0 10px rgba(255,215,0,0.4)'
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="font-orbitron text-2xl text-yellow-300 mb-8"
+            >
+              REGISTRATION OPEN
+            </motion.div>
 
           {/* ---------- NEW TWO BUTTONS ---------- */}
 
@@ -181,3 +196,4 @@ const HeroSection = () => {
 };
 
 export default memo(HeroSection);
+
