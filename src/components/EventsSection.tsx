@@ -79,7 +79,7 @@ const eSportsEvents = [
   {
     title: 'Free Fire',
     description: 'Battle it out in the ultimate Free Fire tournament.',
-    coordinator: 'SaiNath - +91 93478 63704 , Uday Kiran - +91 93928 85747',
+    coordinator: 'SaiNath - +91 93478 63704 ,     Uday Kiran - +91 93928 85747',
     icon: Gamepad2,
     registerUrl: 'https://docs.google.com/forms',
   },
@@ -181,6 +181,7 @@ const EventsSection = () => {
 };
 
 export default EventsSection;
+
 
 
 
