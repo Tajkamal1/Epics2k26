@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { 
   Brain, FileText, Image, Briefcase, 
-  Film, Map, Camera, Gamepad2 
+  Film, Map, Camera, Gamepad2, Bug, Star
 } from 'lucide-react';
 import EventCard from './EventCard';
 
@@ -35,6 +35,15 @@ const technicalEvents = [
     icon: Briefcase,
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScPDQp7ieDtpwPAbj4to7DUbhH4K3bzrVBkz9IBkR97Awe4SQ/viewform?usp=publish-editor',
   },
+
+  // NEW TECHNICAL EVENT ADDED
+  {
+    title: 'Bug Fixers',
+    description: 'Put your debugging skills to the test. Identify, analyze, and fix errors in code within the given time. A true challenge for coding enthusiasts.',
+    coordinator: 'Mr. Naveen Kumar',
+    icon: Bug,
+    registerUrl: 'https://docs.google.com/forms',
+  },
 ];
 
 const nonTechnicalEvents = [
@@ -66,6 +75,15 @@ const nonTechnicalEvents = [
     icon: Gamepad2,
     registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfKVctBZP6APiQOXPpqI8dZoyKTBfqZVhT2e5XH1lQZq9t8w/viewform?usp=publish-editor',
   },
+
+  // NEW NON-TECHNICAL EVENT ADDED
+  {
+    title: 'Show Your Talent',
+    description: 'A stage to showcase your hidden talents like singing, dancing, mimicry, or any unique skill. Impress the audience and steal the spotlight!',
+    coordinator: 'Ms. Pooja Reddy',
+    icon: Star,
+    registerUrl: 'https://docs.google.com/forms',
+  },
 ];
 
 const EventsSection = () => {
@@ -75,7 +93,7 @@ const EventsSection = () => {
   return (
     <section id="events" className="relative py-24 sm:py-32 overflow-hidden" ref={ref}>
       <div className="container relative z-10 px-6">
-        {/* Section Header */}
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -89,14 +107,7 @@ const EventsSection = () => {
           <h2 className="font-orbitron text-3xl sm:text-4xl md:text-5xl font-bold text-gradient-gold glow-gold mb-6">
             Event Lineup
           </h2>
-          
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={isInView ? { scaleX: 1 } : {}}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="w-32 h-0.5 mx-auto bg-gradient-to-r from-transparent via-primary to-transparent mb-8"
-          />
-          
+
           <p className="max-w-2xl mx-auto font-rajdhani text-lg text-foreground/70">
             From brain-teasing technical challenges to fun-filled entertainment, 
             EPICS 2026 offers something for everyone.
@@ -105,25 +116,9 @@ const EventsSection = () => {
 
         {/* Technical Events */}
         <div className="mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-4 mb-10"
-          >
-            <div className="w-12 h-12 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center">
-              <Brain className="w-6 h-6 text-primary" />
-            </div>
-            <div>
-              <h3 className="font-orbitron text-2xl font-bold text-foreground">
-                Technical Events
-              </h3>
-              <p className="font-rajdhani text-muted-foreground">
-                Challenge your technical skills
-              </p>
-            </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent ml-4" />
-          </motion.div>
+          <h3 className="font-orbitron text-2xl font-bold mb-6">
+            Technical Events
+          </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {technicalEvents.map((event, index) => (
@@ -139,25 +134,9 @@ const EventsSection = () => {
 
         {/* Non-Technical Events */}
         <div>
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex items-center gap-4 mb-10"
-          >
-            <div className="w-12 h-12 rounded-xl bg-accent/20 border border-accent/30 flex items-center justify-center">
-              <Gamepad2 className="w-6 h-6 text-accent" />
-            </div>
-            <div>
-              <h3 className="font-orbitron text-2xl font-bold text-foreground">
-                Non-Technical Events
-              </h3>
-              <p className="font-rajdhani text-muted-foreground">
-                Fun-filled entertainment awaits
-              </p>
-            </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-accent/30 to-transparent ml-4" />
-          </motion.div>
+          <h3 className="font-orbitron text-2xl font-bold mb-6">
+            Non-Technical Events
+          </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {nonTechnicalEvents.map((event, index) => (
@@ -170,10 +149,10 @@ const EventsSection = () => {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );
 };
 
 export default EventsSection;
-
