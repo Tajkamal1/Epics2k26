@@ -7,6 +7,7 @@ interface TimeUnit {
 }
 
 const CountdownTimer = () => {
+  // Set target date to March 15, 2026
   const targetDate = new Date('2026-03-15T09:00:00').getTime();
   
   const [timeLeft, setTimeLeft] = useState({
@@ -60,9 +61,10 @@ const CountdownTimer = () => {
             className="relative"
           >
             <div className="timer-digit w-20 sm:w-28 md:w-32 h-24 sm:h-32 md:h-36 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
-              
+              {/* Scan line effect */}
               <div className="absolute inset-0 scan-line opacity-50" />
               
+              {/* Number display with animation */}
               <AnimatePresence mode="popLayout">
                 <motion.span
                   key={unit.value}
@@ -80,9 +82,11 @@ const CountdownTimer = () => {
                 {unit.label}
               </span>
               
+              {/* Glow effect at bottom */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
             </div>
             
+            {/* Separator dots */}
             {index < timeUnits.length - 1 && (
               <div className="hidden sm:flex absolute -right-3 top-1/2 -translate-y-1/2 flex-col gap-2">
                 <motion.span
