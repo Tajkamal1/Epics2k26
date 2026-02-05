@@ -34,11 +34,11 @@ const Footer = () => {
             
             <div className="space-y-3">
               <a 
-                href="mailto:diwakarvp@gmail.com" 
+                href="mailto:epics2k26@mits.ac.in" 
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                <span className="font-space text-sm">diwakarvp@gmail.com</span>
+                <span className="font-space text-sm">epics2k26@mits.ac.in</span>
               </a>
               <a 
                 href="tel:7207058526" 
@@ -163,3 +163,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
