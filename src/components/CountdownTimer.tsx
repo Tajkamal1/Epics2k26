@@ -45,20 +45,22 @@ const CountdownTimer = () => {
   ];
 
   return (
-    <div className="text-center w-full px-2 sm:px-4 max-w-[100%] mx-auto">
+    <div className="text-center px-2 sm:px-4">
       <h3 className="font-rajdhani text-lg sm:text-xl text-primary/80 mb-6 tracking-widest uppercase">
         Event Starts In
       </h3>
       
-      {/* GRID LAYOUT INSTEAD OF FLEX */}
+      {/* MAIN FIXED GRID CONTAINER */}
       <div
         className="
           grid 
-          grid-cols-4
-          gap-1
-          sm:gap-3
-          md:gap-6
-          justify-items-center
+          grid-cols-4 
+          gap-[4px] 
+          sm:gap-3 
+          w-full 
+          max-w-[380px] 
+          sm:max-w-[500px]
+          mx-auto
         "
       >
         {timeUnits.map((unit, index) => (
@@ -67,19 +69,22 @@ const CountdownTimer = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.1 }}
-            className="relative w-full flex justify-center"
+            className="relative"
           >
             <div
               className="
                 timer-digit
-                w-[90%]
-                sm:w-[80px]
+
+                w-[72px] 
+                xs:w-[78px] 
+                sm:w-[90px] 
                 md:w-[110px]
 
-                h-[70px]
-                sm:h-[90px]
+                h-[78px] 
+                sm:h-[90px] 
                 md:h-[120px]
 
+                mx-auto
                 rounded-xl 
                 flex flex-col 
                 items-center 
@@ -88,8 +93,10 @@ const CountdownTimer = () => {
                 overflow-hidden
               "
             >
+              {/* Scan line effect */}
               <div className="absolute inset-0 scan-line opacity-50" />
               
+              {/* Number display with animation */}
               <AnimatePresence mode="popLayout">
                 <motion.span
                   key={unit.value}
@@ -103,13 +110,15 @@ const CountdownTimer = () => {
                 </motion.span>
               </AnimatePresence>
               
-              <span className="font-rajdhani text-[9px] sm:text-xs text-muted-foreground uppercase tracking-widest mt-1">
+              <span className="font-rajdhani text-[10px] sm:text-sm text-muted-foreground uppercase tracking-widest mt-1">
                 {unit.label}
               </span>
               
+              {/* Glow effect at bottom */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
             </div>
-
+            
+            {/* Separator dots (only on larger screens) */}
             {index < timeUnits.length - 1 && (
               <div className="hidden sm:flex absolute -right-3 top-1/2 -translate-y-1/2 flex-col gap-2">
                 <motion.span
