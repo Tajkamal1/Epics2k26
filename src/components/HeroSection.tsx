@@ -13,7 +13,7 @@ const HeroSection = () => {
   });
 
   const fullText = 'EPICS 2K26';
-  const subtitle = 'Organized by CSE Cyber Security Department';
+  const subtitle = 'Organized by CSE (Cyber Security) Department';
   const eventDate = new Date('2026-02-26T09:00:00');
 
   /* ---------------- effects ---------------- */
@@ -25,6 +25,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     if (!showContent) return;
+
     let index = 0;
     const typingInterval = setInterval(() => {
       if (index <= fullText.length) {
@@ -35,6 +36,7 @@ const HeroSection = () => {
         setTypingComplete(true);
       }
     }, 100);
+
     return () => clearInterval(typingInterval);
   }, [showContent]);
 
@@ -55,6 +57,7 @@ const HeroSection = () => {
 
     calculateTimeLeft();
     const timer = setInterval(calculateTimeLeft, 1000);
+
     return () => clearInterval(timer);
   }, []);
 
@@ -68,39 +71,38 @@ const HeroSection = () => {
   /* ---------------- UI ---------------- */
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       {/* Background */}
       <div className="fixed inset-0 bg-background z-0">
         <div className="absolute inset-0 cyber-grid opacity-50" />
       </div>
 
-      <div className="container relative z-10 px-6 text-center">
+      <div className="container relative z-10 px-4 md:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
           {/* Title */}
-          <h1 className="font-orbitron text-6xl md:text-8xl font-bold text-gradient-gold glow-gold mb-4">
+          <h1 className="font-orbitron text-5xl md:text-8xl font-bold text-gradient-gold glow-gold mb-4">
             {typedText}
             {!typingComplete && <span className="text-primary">|</span>}
           </h1>
 
-          <p className="font-rajdhani text-xl md:text-3xl text-foreground/70 tracking-widest mb-6">
+          {/* Subtitle */}
+          <p className="font-rajdhani text-lg md:text-3xl text-foreground/70 tracking-widest mb-6">
             {subtitle}
           </p>
 
-          <p className="font-rajdhani text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-6">
-            EPICS 2026 welcomes enthusiastic participants nationwide to engage,
-            explore, and experience academic and technical excellence.
-          </p>
-
-          <p className="font-orbitron text-xl text-gradient-gold font-semibold mb-8">
+          <p className="font-orbitron text-lg md:text-xl text-gradient-gold font-semibold mb-8">
             One Day National Level Symposium
           </p>
 
-          {/* Countdown Timer with Background */}
-          <div className="flex justify-center gap-4 sm:gap-6 mb-12">
+          {/* FLEX BASED RESPONSIVE COUNTDOWN TIMER */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-10 px-2 sm:px-0 mx-2 sm:mx-0">
             {[
               { label: 'DAYS', value: timeLeft.days },
               { label: 'HOURS', value: timeLeft.hours },
@@ -110,19 +112,20 @@ const HeroSection = () => {
               <div
                 key={item.label}
                 className="
-                  px-5 py-4
+                  px-3 py-3 sm:px-5 sm:py-4
                   bg-secondary/60
                   backdrop-blur-md
                   border border-primary/40
                   rounded-xl
-                  min-w-[90px]
                   shadow-[0_0_20px_rgba(255,215,0,0.25)]
+                  min-w-[80px]
                 "
               >
-                <div className="font-orbitron text-3xl font-bold text-gradient-gold">
+                <div className="font-orbitron text-2xl sm:text-3xl font-bold text-gradient-gold">
                   {String(item.value).padStart(2, '0')}
                 </div>
-                <div className="font-rajdhani text-xs text-foreground/70 tracking-wider">
+
+                <div className="font-rajdhani text-[10px] sm:text-xs text-foreground/70 tracking-wider">
                   {item.label}
                 </div>
               </div>
@@ -132,7 +135,7 @@ const HeroSection = () => {
           {/* Register Button */}
           <motion.button
             onClick={handleRegisterClick}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             animate={{
               boxShadow: [
@@ -143,8 +146,8 @@ const HeroSection = () => {
             }}
             transition={{ duration: 2, repeat: Infinity }}
             className="
-              px-12 py-4
-              font-orbitron text-xl
+              px-8 sm:px-12 py-3 sm:py-4
+              font-orbitron text-lg sm:text-xl
               bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
               text-black
               rounded-full
@@ -162,4 +165,3 @@ const HeroSection = () => {
 };
 
 export default memo(HeroSection);
-
