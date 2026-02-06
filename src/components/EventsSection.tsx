@@ -40,7 +40,7 @@ const technicalEvents = [
     description: 'Debug and fix errors within the given time.',
     coordinator: 'A Roopa - +91 90321 28995',
     icon: Bug,
-    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfKVctBZP6APiQOXPpqI8dZoyKTBfqZVhT2e5XH1lQZq9t8w/viewform?usp=publish-editor', // mapped from Non-Technical E-Sports link
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdzPDAf0ZrrnWF4RkJBOGj4cNGLksP8NxXpNUJ0f2PGYvwBpA/viewform?usp=publish-editor', // mapped from Non-Technical E-Sports link
   },
 ];
 
@@ -71,7 +71,7 @@ const nonTechnicalEvents = [
     description: 'Fun filled event with exciting games and activities.',
     coordinator: 'Akhil - +91 81212 42095',
     icon: Star,
-    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfKVctBZP6APiQOXPpqI8dZoyKTBfqZVhT2e5XH1lQZq9t8w/viewform?usp=publish-editor', // mapped from Non-Technical E-Sports link
+    registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeY70ieun7OAHoYeCBNfQMKYoRGlybphIcBQF2b_OrW-9Ro_g/viewform?usp=publish-editor', // mapped from Non-Technical E-Sports link
   },
 ];
 
@@ -154,3 +154,4 @@ const EventsSection = () => {
 };
 
 export default EventsSection;
+
