@@ -79,25 +79,25 @@ const HeroSection = () => {
 
       {/* --- NAVBAR --- */}
       <div className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/30">
-        <div className="container mx-auto px-3 sm:px-6 py-2 flex items-center justify-between">
+        <div className="container mx-auto px-3 sm:px-6 py-3 sm:py-2 flex items-center justify-between">
           
-          {/* Left Side: Logo with responsive height */}
-          <div className="flex items-center gap-1 sm:gap-2">
+          {/* Left Side: Logo with responsive height (mobile large, desktop small) */}
+          <div className="flex items-center gap-2 sm:gap-2">
             <img
               src="/MITS_LOGO.png"
               alt="MITS Logo"
-              className="h-8 xs:h-10 sm:h-14 md:h-20 w-auto object-contain"
+              className="h-14 sm:h-10 md:h-8 w-auto object-contain"
             />
             <img
               src="/MITS_Deemed.png"
               alt="MITS Deemed University"
-              className="h-8 xs:h-10 sm:h-14 md:h-18 w-auto object-contain"
+              className="h-14 sm:h-10 md:h-8 w-auto object-contain"
             />
           </div>
 
           {/* Right Side: Circular Image Responsive */}
           <div className="flex items-center">
-            <div className="h-8 w-8 xs:h-10 xs:w-10 sm:h-14 sm:w-14 md:h-20 md:w-20 rounded-full overflow-hidden border border-yellow-500/50">
+            <div className="h-14 w-14 sm:h-10 sm:w-10 md:h-8 md:w-8 rounded-full overflow-hidden border border-yellow-500/50">
               <img
                 src="/27_years.jpeg"
                 alt="27 Years of Excellence"
@@ -116,13 +116,13 @@ const HeroSection = () => {
           transition={{ duration: 0.6 }}
         >
           {/* Title */}
-          <h1 className="font-orbitron text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-gold glow-gold mb-4">
+          <h1 className="font-orbitron text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gradient-gold glow-gold mb-4">
             {typedText}
             {!typingComplete && <span className="text-primary">|</span>}
           </h1>
 
           {/* Subtitle */}
-          <p className="font-rajdhani text-base sm:text-lg md:text-3xl mb-6 text-foreground/70 tracking-widest">
+          <p className="font-rajdhani text-base sm:text-lg md:text-2xl mb-6 text-foreground/70 tracking-widest">
             {subtitle}
           </p>
 
@@ -144,9 +144,9 @@ const HeroSection = () => {
             ].map((item) => (
               <div
                 key={item.label}
-                className="px-3 py-2 sm:px-5 sm:py-4 bg-black/60 rounded-xl border border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] min-w-[70px] xs:min-w-[80px]"
+                className="px-3 py-2 sm:px-5 sm:py-4 bg-black/60 rounded-xl border border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] min-w-[80px]"
               >
-                <div className="text-xl sm:text-3xl font-bold text-yellow-300">
+                <div className="text-xl sm:text-2xl md:text-xl font-bold text-yellow-300">
                   {String(item.value).padStart(2, '0')}
                 </div>
                 <div className="text-xs text-foreground/70 tracking-wider">
