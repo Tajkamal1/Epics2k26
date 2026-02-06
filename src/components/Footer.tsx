@@ -163,9 +163,6 @@ const Footer = () => {
               © 2026 EPICS - Cyber Security Department. All rights reserved.
             </p>
             
-            <p className="font-rajdhani text-sm text-muted-foreground flex items-center gap-2">
-              Made with <Heart className="w-4 h-4 text-primary animate-pulse" /> for innovation
-            </p>
           </div>
         </motion.div>
       </div>
@@ -174,3 +171,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
