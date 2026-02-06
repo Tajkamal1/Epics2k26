@@ -81,23 +81,23 @@ const HeroSection = () => {
       <div className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/30">
         <div className="container mx-auto px-3 sm:px-6 py-3 sm:py-2 flex items-center justify-between">
           
-          {/* Left Side: Logo with responsive height (mobile large, desktop small) */}
+          {/* Left Side: Logo with responsive height */}
           <div className="flex items-center gap-2 sm:gap-2">
             <img
               src="/MITS_LOGO.png"
               alt="MITS Logo"
-              className="h-14 sm:h-10 md:h-8 w-auto object-contain"
+              className="h-14 sm:h-12 md:h-14 lg:h-16 w-auto object-contain"
             />
             <img
               src="/MITS_Deemed.png"
               alt="MITS Deemed University"
-              className="h-14 sm:h-10 md:h-8 w-auto object-contain"
+              className="h-14 sm:h-12 md:h-14 lg:h-16 w-auto object-contain"
             />
           </div>
 
-          {/* Right Side: Circular Image Responsive */}
+          {/* Right Side: Circular Image with highlighted border */}
           <div className="flex items-center">
-            <div className="h-14 w-14 sm:h-10 sm:w-10 md:h-8 md:w-8 rounded-full overflow-hidden border border-yellow-500/50">
+            <div className="h-14 w-14 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 rounded-full overflow-hidden border-4 border-yellow-400 shadow-[0_0_15px_rgba(255,215,0,0.6)]">
               <img
                 src="/27_years.jpeg"
                 alt="27 Years of Excellence"
@@ -146,7 +146,7 @@ const HeroSection = () => {
                 key={item.label}
                 className="px-3 py-2 sm:px-5 sm:py-4 bg-black/60 rounded-xl border border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] min-w-[80px]"
               >
-                <div className="text-xl sm:text-2xl md:text-xl font-bold text-yellow-300">
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-300">
                   {String(item.value).padStart(2, '0')}
                 </div>
                 <div className="text-xs text-foreground/70 tracking-wider">
