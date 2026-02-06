@@ -1,7 +1,31 @@
 import { motion } from 'framer-motion';
-import { Shield, Mail, Phone, MapPin, Code, Heart } from 'lucide-react';
+import { Shield, Mail, Phone, MapPin, Code, Heart, Github, Linkedin } from 'lucide-react';
 
 const Footer = () => {
+  const developers = [
+    {
+      name: 'G.Tajkamal 👑', 
+      role: 'Web Developer',
+      github: 'https://github.com/Tajkamal1',
+      linkedin: 'https://www.linkedin.com/in/gagguturu-tajkamal-18191b2b6',
+      email: 'gagguturutajkamal06@gmail.com'
+    },
+    {
+      name: 'Gandhodi Mouresh',
+      role: 'Web Developer',
+      github: 'https://github.com/mouresh',
+      linkedin: 'https://www.linkedin.com/in/gandhodi-mouresh',
+      email: 'mourishroyal@gmail.com'
+    },
+    {
+      name: 'Kiran Kumar Reddy',
+      role: 'Web Developer',
+      github: 'https://github.com/Leesec01',
+      linkedin: 'https://www.linkedin.com/in/kiransavireddy/',
+      email: 'kiransavireddy@gmail.com'
+    }
+  ];
+
   return (
     <footer id="contact" className="relative py-16 sm:py-20 overflow-hidden">
       <div className="container relative z-10 px-6">
@@ -68,29 +92,7 @@ const Footer = () => {
             </h4>
             
             <div className="space-y-4">
-              {[
-                {
-                  name: 'G.Tajkamal',
-                  role: 'Web Developer',
-                  github: 'https://github.com/Tajkamal1',
-                  linkedin: 'https://www.linkedin.com/in/gagguturu-tajkamal-18191b2b6',
-                  email: 'gagguturutajkamal06@gmail.com'
-                },
-                {
-                  name: 'Gandhodi Mouresh',
-                  role: 'Web Developer',
-                  github: 'https://github.com/mouresh',
-                  linkedin: 'https://www.linkedin.com/in/gandhodi-mouresh',
-                  email: 'mourishroyal@gmail.com'
-                },
-                {
-                  name: 'Kiran Kumar Reddy',
-                  role: 'Web Developer',
-                  github: 'https://github.com/Leesec01',
-                  linkedin: 'https://www.linkedin.com/in/kiransavireddy/',
-                  email: 'kiransavireddy@gmail.com'
-                }
-              ].map((developer) => (
+              {developers.map((developer) => (
                 <div 
                   key={developer.name}
                   className="card-cyber rounded-xl p-4 bg-secondary/30 border border-primary/20"
@@ -109,28 +111,31 @@ const Footer = () => {
                     </div>
                   </div>
 
-                  <div className="flex gap-2 mt-3">
+                  <div className="flex gap-3 mt-3">
                     <a 
                       href={developer.github} 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary transition-colors"
+                      title="GitHub"
                     >
-                      GitHub
+                      <Github className="w-5 h-5" />
                     </a>
                     <a 
                       href={developer.linkedin} 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary transition-colors"
+                      title="LinkedIn"
                     >
-                      LinkedIn
+                      <Linkedin className="w-5 h-5" />
                     </a>
                     <a 
                       href={`mailto:${developer.email}`} 
                       className="text-muted-foreground hover:text-primary transition-colors"
+                      title="Email"
                     >
-                      <Mail className="w-4 h-4" />
+                      <Mail className="w-5 h-5" />
                     </a>
                   </div>
                 </div>
@@ -163,5 +168,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
