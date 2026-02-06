@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect, memo } from 'react';
 import { motion } from 'framer-motion';
 
@@ -8,17 +6,13 @@ const HeroSection = () => {
   const [typedText, setTypedText] = useState('');
   const [typingComplete, setTypingComplete] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
+    days: 0, hours: 0, minutes: 0, seconds: 0
   });
 
   const fullText = 'EPICS 2K26';
   const subtitle = 'Organized by Department of CSE (Cyber Security)';
   const eventDate = new Date('2026-02-26T09:00:00');
 
-  /* ---------------- Effects ---------------- */
   useEffect(() => {
     const contentTimer = setTimeout(() => setShowContent(true), 100);
     return () => clearTimeout(contentTimer);
@@ -26,7 +20,6 @@ const HeroSection = () => {
 
   useEffect(() => {
     if (!showContent) return;
-
     let index = 0;
     const typingInterval = setInterval(() => {
       if (index <= fullText.length) {
@@ -37,7 +30,6 @@ const HeroSection = () => {
         setTypingComplete(true);
       }
     }, 120);
-
     return () => clearInterval(typingInterval);
   }, [showContent]);
 
@@ -45,7 +37,6 @@ const HeroSection = () => {
     const calculateTimeLeft = () => {
       const now = new Date();
       const diff = eventDate.getTime() - now.getTime();
-
       if (diff > 0) {
         setTimeLeft({
           days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -55,7 +46,6 @@ const HeroSection = () => {
         });
       }
     };
-
     calculateTimeLeft();
     const timer = setInterval(calculateTimeLeft, 1000);
     return () => clearInterval(timer);
@@ -70,45 +60,42 @@ const HeroSection = () => {
   };
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      {/* Background Grid */}
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="fixed inset-0 bg-background z-0">
         <div className="absolute inset-0 cyber-grid opacity-50" />
       </div>
 
-      {/* --- NAVBAR --- */}
-      <div className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/30">
-        <div className="container mx-auto px-3 sm:px-6 py-2 flex items-center justify-between">
+      {/* --- COMPACT RESPONSIVE NAVBAR --- */}
+      <nav className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-yellow-500/20">
+        <div className="container mx-auto px-4 py-1.5 sm:py-2 flex items-center justify-between gap-4">
           
-          {/* Left Side: Increased Logo Sizes */}
-          <div className="flex items-center gap-1 sm:gap-2">
+          {/* Grouped Left Side: MITS Logo + Stretched Deemed Text */}
+          <div className="flex items-center gap-3 flex-1 min-w-0">
             <img
               src="/MITS_LOGO.png"
               alt="MITS Logo"
-              className="h-14 sm:h-20 w-auto object-contain" 
+              className="h-9 sm:h-12 w-auto object-contain flex-shrink-0" 
             />
+            {/* STRETCHED DEEMED IMAGE: Responsive width and height */}
             <img
               src="/MITS_Deemed.png"
               alt="MITS Deemed University"
-              className="h-14 sm:h-18 w-auto object-contain"
+              className="h-8 sm:h-14 w-full max-w-[240px] sm:max-w-[480px] object-contain"
             />
           </div>
 
-          {/* Right Side: PERFECT CIRCLE SHAPE */}
-          <div className="flex items-center">
-            <div className="h-14 w-14 sm:h-20 sm:w-20 rounded-full overflow-hidden border border-yellow-500/50">
+          {/* Right Side: 27 Years (Small Circle) */}
+          <div className="flex-shrink-0">
+            <div className="h-10 w-10 sm:h-14 sm:w-14 rounded-full overflow-hidden border border-yellow-500/40 shadow-[0_0_8px_rgba(255,215,0,0.15)]">
                 <img
-                src="/27_years.jpeg"
-                alt="27 Years of Excellence"
-                className="h-full w-full object-cover"
+                  src="/27_years.jpeg"
+                  alt="27 Years"
+                  className="h-full w-full object-cover"
                 />
             </div>
           </div>
         </div>
-      </div>
+      </nav>
 
       {/* Hero Content */}
       <div className="container relative z-10 px-4 md:px-6 text-center mt-20">
@@ -117,66 +104,54 @@ const HeroSection = () => {
           animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          {/* Title */}
-          <h1 className="font-orbitron text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-gold glow-gold mb-4">
+          <h1 className="font-orbitron text-4xl sm:text-6xl md:text-8xl font-bold text-gradient-gold glow-gold mb-3">
             {typedText}
-            {!typingComplete && <span className="text-primary">|</span>}
+            {!typingComplete && <span className="text-yellow-500 animate-pulse">|</span>}
           </h1>
 
-          {/* Subtitle */}
-          <p className="font-rajdhani text-base sm:text-lg md:text-3xl mb-6 text-foreground/70 tracking-widest">
+          <p className="font-rajdhani text-sm sm:text-lg md:text-2xl mb-6 text-foreground/70 tracking-widest uppercase">
             {subtitle}
           </p>
 
-          <p className="font-orbitron text-lg sm:text-xl mb-6 text-gradient-gold font-semibold">
+          <p className="font-orbitron text-base sm:text-xl mb-4 text-gradient-gold font-semibold">
             One Day National Level Symposium
           </p>
 
-          <p className="text-lg sm:text-2xl text-yellow-300 mb-6">
-            February 26, 2026
+          <p className="text-xl sm:text-3xl font-bold text-yellow-400 mb-8 tracking-widest">
+            FEBRUARY 26, 2026
           </p>
 
-          {/* Timer */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-6 mb-8">
+          {/* Timer Grid */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-10">
             {[
               { label: 'DAYS', value: timeLeft.days },
               { label: 'HOURS', value: timeLeft.hours },
               { label: 'MINUTES', value: timeLeft.minutes },
               { label: 'SECONDS', value: timeLeft.seconds }
             ].map(item => (
-              <div
-                key={item.label}
-                className="px-3 py-2 sm:px-5 sm:py-4 bg-black/60 rounded-xl border border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] min-w-[80px]"
-              >
+              <div key={item.label} className="w-16 h-16 sm:w-24 sm:h-24 flex flex-col items-center justify-center bg-black/40 rounded-lg border border-yellow-500/30 shadow-[0_0_15px_rgba(255,215,0,0.05)]">
                 <div className="text-xl sm:text-3xl font-bold text-yellow-300">
                   {String(item.value).padStart(2, '0')}
                 </div>
-                <div className="text-xs text-foreground/70 tracking-wider">
+                <div className="text-[10px] sm:text-xs text-foreground/50">
                   {item.label}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Registration Open */}
-          <motion.div className="text-xl sm:text-2xl text-yellow-300 mb-6">
-            REGISTRATION OPEN
-          </motion.div>
-
-          {/* Event Buttons - BOTH MATCHING NOW */}
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button
               onClick={scrollToTechnical}
-              className="px-6 sm:px-10 py-2 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-300 transition-colors"
+              className="px-8 py-2.5 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-300 transition-all text-sm sm:text-base"
             >
-              Technical Events
+              TECHNICAL EVENTS
             </button>
-
             <button
               onClick={scrollToNonTechnical}
-              className="px-6 sm:px-10 py-2 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-300 transition-colors"
+              className="px-8 py-2.5 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-300 transition-all text-sm sm:text-base"
             >
-              Non-Technical Events
+              NON-TECHNICAL EVENTS
             </button>
           </div>
         </motion.div>
@@ -186,7 +161,3 @@ const HeroSection = () => {
 };
 
 export default memo(HeroSection);
-
-
-
-
