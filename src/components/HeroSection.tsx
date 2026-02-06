@@ -77,28 +77,27 @@ const HeroSection = () => {
         <div className="absolute inset-0 cyber-grid opacity-50" />
       </div>
 
-      {/* --- RESPONSIVE NAVBAR --- */}
+      {/* --- NAVBAR --- */}
       <div className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/30">
-        <div className="container mx-auto px-3 sm:px-6 py-1.5 md:py-2 flex items-center justify-between">
+        <div className="container mx-auto px-3 sm:px-6 py-2 flex items-center justify-between">
           
-          {/* Left Side: Stretched on Mobile, Compact on Windows */}
-          <div className="flex items-center gap-1 sm:gap-4 flex-grow md:flex-grow-0">
+          {/* Left Side: Increased Logo Sizes */}
+          <div className="flex items-center gap-1 sm:gap-2">
             <img
               src="/MITS_LOGO.png"
               alt="MITS Logo"
-              className="h-12 sm:h-16 md:h-12 w-auto object-contain flex-shrink-0" 
+              className="h-14 sm:h-20 w-auto object-contain" 
             />
-            {/* MITS Deemed - Stretches on mobile, becomes smaller on desktop */}
             <img
               src="/MITS_Deemed.png"
               alt="MITS Deemed University"
-              className="h-10 sm:h-14 md:h-10 w-full max-w-[260px] md:max-w-[400px] object-contain transition-all"
+              className="h-14 sm:h-18 w-auto object-contain"
             />
           </div>
 
           {/* Right Side: PERFECT CIRCLE SHAPE */}
-          <div className="flex items-center ml-2">
-            <div className="h-12 w-12 sm:h-16 md:h-12 sm:w-16 md:w-12 rounded-full overflow-hidden border border-yellow-500/50 shadow-[0_0_10px_rgba(255,215,0,0.2)]">
+          <div className="flex items-center">
+            <div className="h-14 w-14 sm:h-20 sm:w-20 rounded-full overflow-hidden border border-yellow-500/50">
                 <img
                 src="/27_years.jpeg"
                 alt="27 Years of Excellence"
@@ -110,14 +109,14 @@ const HeroSection = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="container relative z-10 px-4 md:px-6 text-center mt-24 md:mt-28">
+      <div className="container relative z-10 px-4 md:px-6 text-center mt-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
           {/* Title */}
-          <h1 className="font-orbitron text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-gold glow-gold mb-4">
+          <h1 className="font-orbitron text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-gold glow-gold mb-4">
             {typedText}
             {!typingComplete && <span className="text-primary">|</span>}
           </h1>
@@ -145,12 +144,12 @@ const HeroSection = () => {
             ].map(item => (
               <div
                 key={item.label}
-                className="px-3 py-2 sm:px-5 sm:py-4 bg-black/60 rounded-xl border border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] min-w-[75px] sm:min-w-[90px]"
+                className="px-3 py-2 sm:px-5 sm:py-4 bg-black/60 rounded-xl border border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] min-w-[80px]"
               >
                 <div className="text-xl sm:text-3xl font-bold text-yellow-300">
                   {String(item.value).padStart(2, '0')}
                 </div>
-                <div className="text-[10px] sm:text-xs text-foreground/70 tracking-wider">
+                <div className="text-xs text-foreground/70 tracking-wider">
                   {item.label}
                 </div>
               </div>
@@ -158,22 +157,22 @@ const HeroSection = () => {
           </div>
 
           {/* Registration Open */}
-          <motion.div className="text-xl sm:text-2xl text-yellow-300 mb-6 font-bold tracking-widest">
+          <motion.div className="text-xl sm:text-2xl text-yellow-300 mb-6">
             REGISTRATION OPEN
           </motion.div>
 
-          {/* Event Buttons */}
+          {/* Event Buttons - BOTH MATCHING NOW */}
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button
               onClick={scrollToTechnical}
-              className="px-6 sm:px-10 py-3 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-300 transition-all shadow-[0_0_15px_rgba(255,215,0,0.2)]"
+              className="px-6 sm:px-10 py-2 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-300 transition-colors"
             >
               Technical Events
             </button>
 
             <button
               onClick={scrollToNonTechnical}
-              className="px-6 sm:px-10 py-3 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-300 transition-all shadow-[0_0_15px_rgba(255,215,0,0.2)]"
+              className="px-6 sm:px-10 py-2 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-300 transition-colors"
             >
               Non-Technical Events
             </button>
@@ -185,3 +184,4 @@ const HeroSection = () => {
 };
 
 export default memo(HeroSection);
+
