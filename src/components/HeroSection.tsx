@@ -88,12 +88,12 @@ const HeroSection = () => {
             <img
               src="/MITS_LOGO.png"
               alt="MITS Logo"
-              className="h-12 sm:h-20 w-auto object-contain" 
+              className="h-14 sm:h-20 w-auto object-contain" 
             />
             <img
               src="/MITS_Deemed.png"
               alt="MITS Deemed University"
-              className="h-10 sm:h-16 w-auto object-contain"
+              className="h-14 sm:h-18 w-auto object-contain"
             />
           </div>
 
@@ -186,3 +186,4 @@ const HeroSection = () => {
 };
 
 export default memo(HeroSection);
+
