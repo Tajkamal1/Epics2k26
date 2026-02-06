@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { Shield, Mail, Phone, MapPin, Code, Heart, Github, Linkedin } from 'lucide-react';
+import { Shield, Mail, Phone, MapPin, Code, Heart, Github, Linkedin, Crown } from 'lucide-react';
 
 const Footer = () => {
   const developers = [
     {
-      name: 'G.Tajkamal 👑', 
+      name: 'G.Tajkamal',
       role: 'Web Developer',
+      main: true,
       github: 'https://github.com/Tajkamal1',
       linkedin: 'https://www.linkedin.com/in/gagguturu-tajkamal-18191b2b6',
       email: 'gagguturutajkamal06@gmail.com'
@@ -13,6 +14,7 @@ const Footer = () => {
     {
       name: 'Gandhodi Mouresh',
       role: 'Web Developer',
+      main: false,
       github: 'https://github.com/mouresh',
       linkedin: 'https://www.linkedin.com/in/gandhodi-mouresh',
       email: 'mourishroyal@gmail.com'
@@ -20,6 +22,7 @@ const Footer = () => {
     {
       name: 'Kiran Kumar Reddy',
       role: 'Web Developer',
+      main: false,
       github: 'https://github.com/Leesec01',
       linkedin: 'https://www.linkedin.com/in/kiransavireddy/',
       email: 'kiransavireddy@gmail.com'
@@ -98,8 +101,11 @@ const Footer = () => {
                   className="card-cyber rounded-xl p-4 bg-secondary/30 border border-primary/20"
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/30 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/30 flex items-center justify-center relative">
                       <Code className="w-5 h-5 text-primary" />
+                      {developer.main && (
+                        <Crown className="w-4 h-4 text-yellow-400 absolute -top-1 -right-1" title="Main Developer" />
+                      )}
                     </div>
                     <div>
                       <p className="font-space font-medium text-foreground">
