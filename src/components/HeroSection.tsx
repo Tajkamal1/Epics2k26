@@ -9,7 +9,7 @@ const HeroSection = () => {
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   });
 
   const fullText = 'EPICS 2K26';
@@ -81,28 +81,28 @@ const HeroSection = () => {
       <div className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/30">
         <div className="container mx-auto px-3 sm:px-6 py-2 flex items-center justify-between">
           
-          {/* Left Side: Increased Logo Sizes */}
+          {/* Left Side: Logo with responsive height */}
           <div className="flex items-center gap-1 sm:gap-2">
             <img
               src="/MITS_LOGO.png"
               alt="MITS Logo"
-              className="h-14 sm:h-20 w-auto object-contain" 
+              className="h-8 xs:h-10 sm:h-14 md:h-20 w-auto object-contain"
             />
             <img
               src="/MITS_Deemed.png"
               alt="MITS Deemed University"
-              className="h-14 sm:h-18 w-auto object-contain"
+              className="h-8 xs:h-10 sm:h-14 md:h-18 w-auto object-contain"
             />
           </div>
 
-          {/* Right Side: PERFECT CIRCLE SHAPE */}
+          {/* Right Side: Circular Image Responsive */}
           <div className="flex items-center">
-            <div className="h-14 w-14 sm:h-20 sm:w-20 rounded-full overflow-hidden border border-yellow-500/50">
-                <img
+            <div className="h-8 w-8 xs:h-10 xs:w-10 sm:h-14 sm:w-14 md:h-20 md:w-20 rounded-full overflow-hidden border border-yellow-500/50">
+              <img
                 src="/27_years.jpeg"
                 alt="27 Years of Excellence"
                 className="h-full w-full object-cover"
-                />
+              />
             </div>
           </div>
         </div>
@@ -140,11 +140,11 @@ const HeroSection = () => {
               { label: 'DAYS', value: timeLeft.days },
               { label: 'HOURS', value: timeLeft.hours },
               { label: 'MINUTES', value: timeLeft.minutes },
-              { label: 'SECONDS', value: timeLeft.seconds }
-            ].map(item => (
+              { label: 'SECONDS', value: timeLeft.seconds },
+            ].map((item) => (
               <div
                 key={item.label}
-                className="px-3 py-2 sm:px-5 sm:py-4 bg-black/60 rounded-xl border border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] min-w-[80px]"
+                className="px-3 py-2 sm:px-5 sm:py-4 bg-black/60 rounded-xl border border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] min-w-[70px] xs:min-w-[80px]"
               >
                 <div className="text-xl sm:text-3xl font-bold text-yellow-300">
                   {String(item.value).padStart(2, '0')}
@@ -161,7 +161,7 @@ const HeroSection = () => {
             REGISTRATION OPEN
           </motion.div>
 
-          {/* Event Buttons - BOTH MATCHING NOW */}
+          {/* Event Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button
               onClick={scrollToTechnical}
@@ -184,4 +184,3 @@ const HeroSection = () => {
 };
 
 export default memo(HeroSection);
-
