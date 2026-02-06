@@ -78,26 +78,31 @@ const HeroSection = () => {
       </div>
 
       {/* --- NAVBAR --- */}
-      <div className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/30">
-        <div className="container mx-auto px-3 sm:px-6 py-2 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/30">
+        <div className="container mx-auto px-2 sm:px-6 py-3 flex items-center justify-between">
           
-          {/* Left Side: Increased Logo Sizes */}
-          <div className="flex items-center gap-2 sm:gap-4">
-            <img
-              src="/MITS_LOGO.png"
-              alt="MITS Logo"
-              className="h-12 sm:h-20 w-auto object-contain" 
-            />
+          {/* Left Side: Circular MITS Logo & Stretched Deemed Text */}
+          <div className="flex items-center gap-3 sm:gap-6 flex-1">
+            {/* MITS LOGO as Circle */}
+            <div className="h-14 w-14 sm:h-24 sm:w-24 rounded-full overflow-hidden border-2 border-yellow-500/40 bg-white/10 shrink-0 shadow-[0_0_15px_rgba(255,215,0,0.2)]">
+                <img
+                    src="/MITS_LOGO.png"
+                    alt="MITS Logo"
+                    className="h-full w-full object-contain p-1" 
+                />
+            </div>
+            
+            {/* MITS Deemed - Stretched Width to fill space */}
             <img
               src="/MITS_Deemed.png"
               alt="MITS Deemed University"
-              className="h-10 sm:h-16 w-auto object-contain"
+              className="h-10 sm:h-20 w-auto max-w-[200px] sm:max-w-[400px] object-contain flex-grow"
             />
           </div>
 
-          {/* Right Side: PERFECT CIRCLE SHAPE */}
-          <div className="flex items-center">
-            <div className="h-14 w-14 sm:h-20 sm:w-20 rounded-full overflow-hidden border border-yellow-500/50">
+          {/* Right Side: 27 Years Circular Logo */}
+          <div className="flex items-center ml-2">
+            <div className="h-14 w-14 sm:h-24 sm:w-24 rounded-full overflow-hidden border-2 border-yellow-500/40 shadow-[0_0_15px_rgba(255,215,0,0.2)]">
                 <img
                 src="/27_years.jpeg"
                 alt="27 Years of Excellence"
@@ -106,10 +111,10 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      </div>
+      </nav>
 
       {/* Hero Content */}
-      <div className="container relative z-10 px-4 md:px-6 text-center mt-20">
+      <div className="container relative z-10 px-4 md:px-6 text-center mt-32">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={showContent ? { opacity: 1, y: 0 } : {}}
@@ -161,7 +166,7 @@ const HeroSection = () => {
             REGISTRATION OPEN
           </motion.div>
 
-          {/* Event Buttons - BOTH MATCHING NOW */}
+          {/* Event Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button
               onClick={scrollToTechnical}
