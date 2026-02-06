@@ -13,7 +13,7 @@ const HeroSection = () => {
   });
 
   const fullText = 'EPICS 2K26';
-  const subtitle = 'Organized by CSE (Cyber Security) Department';
+  const subtitle = 'Organized by Department of CSE (Cyber Security)';
   const eventDate = new Date('2026-02-26T09:00:00');
 
   useEffect(() => {
