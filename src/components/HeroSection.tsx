@@ -88,7 +88,7 @@ const HeroSection = () => {
               alt="MITS Logo"
               className="h-10 sm:h-16 w-auto object-contain"
             />
-            <div className="h-8 sm:h-12 w-[1px] bg-yellow-500/30 hidden xs:block" /> {/* Separator line */}
+            <div className="h-8 sm:h-12 w-[1px] bg-yellow-500/30 hidden xs:block" />
             <img
               src="/MITS_Deemed.png"
               alt="MITS Deemed University"
@@ -96,13 +96,15 @@ const HeroSection = () => {
             />
           </div>
 
-          {/* Right Side Logo */}
+          {/* Right Side Logo - MADE CIRCULAR HERE */}
           <div className="flex items-center">
-            <img
-              src="/27_years.jpeg"
-              alt="27 Years of Excellence"
-              className="h-12 sm:h-20 w-auto object-contain"
-            />
+            <div className="h-12 w-12 sm:h-20 sm:w-20 rounded-full border-2 border-yellow-500/50 overflow-hidden shadow-[0_0_15px_rgba(255,215,0,0.3)]">
+              <img
+                src="/27_years.jpeg"
+                alt="27 Years of Excellence"
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </nav>
@@ -117,7 +119,7 @@ const HeroSection = () => {
           {/* Title */}
           <h1 className="font-orbitron text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-gradient-gold glow-gold mb-6">
             {typedText}
-            {!typingComplete && <span className="animate-pulse text-yellow-500">_</span>}
+            {!typingComplete && <span className="animate-pulse text-yellow-500">|</span>}
           </h1>
 
           {/* Subtitle */}
