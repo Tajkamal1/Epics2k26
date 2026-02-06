@@ -65,28 +65,30 @@ const HeroSection = () => {
         <div className="absolute inset-0 cyber-grid opacity-50" />
       </div>
 
-      {/* --- COMPACT RESPONSIVE NAVBAR --- */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-yellow-500/20">
-        <div className="container mx-auto px-4 py-1.5 sm:py-2 flex items-center justify-between gap-4">
+      {/* --- RESPONSIVE NAVBAR --- */}
+      <nav className="fixed top-0 left-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-yellow-500/20">
+        <div className="container mx-auto px-3 py-1 sm:py-2 flex items-center justify-between gap-2">
           
-          {/* Grouped Left Side: MITS Logo + Stretched Deemed Text */}
-          <div className="flex items-center gap-3 flex-1 min-w-0">
+          {/* Grouped Left Side */}
+          <div className="flex items-center gap-2 sm:gap-4 flex-1">
+            {/* MITS LOGO: Smaller on Desktop */}
             <img
               src="/MITS_LOGO.png"
               alt="MITS Logo"
-              className="h-9 sm:h-12 w-auto object-contain flex-shrink-0" 
+              className="h-10 md:h-12 w-auto object-contain flex-shrink-0" 
             />
-            {/* STRETCHED DEEMED IMAGE: Responsive width and height */}
+            
+            {/* MITS DEEMED: Large/Stretched on Mobile, Small Icon on Windows */}
             <img
               src="/MITS_Deemed.png"
               alt="MITS Deemed University"
-              className="h-8 sm:h-14 w-full max-w-[240px] sm:max-w-[480px] object-contain"
+              className="h-10 w-[70%] sm:w-auto md:h-10 lg:h-12 max-w-[280px] md:max-w-[400px] object-contain transition-all duration-300"
             />
           </div>
 
-          {/* Right Side: 27 Years (Small Circle) */}
+          {/* Right Side: Compact 27 Years Logo */}
           <div className="flex-shrink-0">
-            <div className="h-10 w-10 sm:h-14 sm:w-14 rounded-full overflow-hidden border border-yellow-500/40 shadow-[0_0_8px_rgba(255,215,0,0.15)]">
+            <div className="h-10 w-10 md:h-12 md:w-12 rounded-full overflow-hidden border border-yellow-500/30">
                 <img
                   src="/27_years.jpeg"
                   alt="27 Years"
@@ -98,7 +100,7 @@ const HeroSection = () => {
       </nav>
 
       {/* Hero Content */}
-      <div className="container relative z-10 px-4 md:px-6 text-center mt-20">
+      <div className="container relative z-10 px-4 md:px-6 text-center mt-16 md:mt-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={showContent ? { opacity: 1, y: 0 } : {}}
@@ -121,7 +123,7 @@ const HeroSection = () => {
             FEBRUARY 26, 2026
           </p>
 
-          {/* Timer Grid */}
+          {/* Timer */}
           <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-10">
             {[
               { label: 'DAYS', value: timeLeft.days },
@@ -129,11 +131,11 @@ const HeroSection = () => {
               { label: 'MINUTES', value: timeLeft.minutes },
               { label: 'SECONDS', value: timeLeft.seconds }
             ].map(item => (
-              <div key={item.label} className="w-16 h-16 sm:w-24 sm:h-24 flex flex-col items-center justify-center bg-black/40 rounded-lg border border-yellow-500/30 shadow-[0_0_15px_rgba(255,215,0,0.05)]">
+              <div key={item.label} className="w-16 h-16 sm:w-24 sm:h-24 flex flex-col items-center justify-center bg-black/40 rounded-lg border border-yellow-500/30 shadow-[0_0_10px_rgba(255,215,0,0.1)]">
                 <div className="text-xl sm:text-3xl font-bold text-yellow-300">
                   {String(item.value).padStart(2, '0')}
                 </div>
-                <div className="text-[10px] sm:text-xs text-foreground/50">
+                <div className="text-[10px] sm:text-xs text-foreground/50 uppercase">
                   {item.label}
                 </div>
               </div>
@@ -143,13 +145,13 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button
               onClick={scrollToTechnical}
-              className="px-8 py-2.5 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-300 transition-all text-sm sm:text-base"
+              className="px-8 py-2.5 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-300 transition-all text-sm"
             >
               TECHNICAL EVENTS
             </button>
             <button
               onClick={scrollToNonTechnical}
-              className="px-8 py-2.5 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-300 transition-all text-sm sm:text-base"
+              className="px-8 py-2.5 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-300 transition-all text-sm"
             >
               NON-TECHNICAL EVENTS
             </button>
