@@ -22,7 +22,7 @@ const Footer = () => {
                   EPICS 2026
                 </h3>
                 <p className="font-rajdhani text-sm text-muted-foreground">
-                  CSE (Cyber Security) Department
+                  Department of CSE(Cyber Security) 
                 </p>
               </div>
             </div>
@@ -163,4 +163,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
