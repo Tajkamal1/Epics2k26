@@ -79,30 +79,28 @@ const HeroSection = () => {
 
       {/* --- NAVBAR --- */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/30">
-        <div className="container mx-auto px-2 sm:px-6 py-3 flex items-center justify-between">
+        <div className="container mx-auto px-3 sm:px-6 py-2 flex items-center justify-between">
           
-          {/* Left Side: Circular MITS Logo & Stretched Deemed Text */}
+          {/* Left Side: Large MITS Logo & Stretched Deemed Text */}
           <div className="flex items-center gap-3 sm:gap-6 flex-1">
-            {/* MITS LOGO as Circle */}
-            <div className="h-14 w-14 sm:h-24 sm:w-24 rounded-full overflow-hidden border-2 border-yellow-500/40 bg-white/10 shrink-0 shadow-[0_0_15px_rgba(255,215,0,0.2)]">
-                <img
-                    src="/MITS_LOGO.png"
-                    alt="MITS Logo"
-                    className="h-full w-full object-contain p-1" 
-                />
-            </div>
+            {/* MITS LOGO - Original Shape, Increased Size */}
+            <img
+              src="/MITS_LOGO.png"
+              alt="MITS Logo"
+              className="h-14 sm:h-24 w-auto object-contain shrink-0" 
+            />
             
-            {/* MITS Deemed - Stretched Width to fill space */}
+            {/* MITS Deemed - Width increased to fill the gap */}
             <img
               src="/MITS_Deemed.png"
               alt="MITS Deemed University"
-              className="h-10 sm:h-20 w-auto max-w-[200px] sm:max-w-[400px] object-contain flex-grow"
+              className="h-10 sm:h-20 w-full max-w-[300px] sm:max-w-[550px] object-contain flex-grow"
             />
           </div>
 
           {/* Right Side: 27 Years Circular Logo */}
           <div className="flex items-center ml-2">
-            <div className="h-14 w-14 sm:h-24 sm:w-24 rounded-full overflow-hidden border-2 border-yellow-500/40 shadow-[0_0_15px_rgba(255,215,0,0.2)]">
+            <div className="h-14 w-14 sm:h-20 sm:w-20 rounded-full overflow-hidden border border-yellow-500/50 shadow-[0_0_15px_rgba(255,215,0,0.2)]">
                 <img
                 src="/27_years.jpeg"
                 alt="27 Years of Excellence"
@@ -114,7 +112,7 @@ const HeroSection = () => {
       </nav>
 
       {/* Hero Content */}
-      <div className="container relative z-10 px-4 md:px-6 text-center mt-32">
+      <div className="container relative z-10 px-4 md:px-6 text-center mt-28">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={showContent ? { opacity: 1, y: 0 } : {}}
