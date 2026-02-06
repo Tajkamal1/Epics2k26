@@ -70,117 +70,109 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Grid Layer */}
+      {/* Background Grid */}
       <div className="fixed inset-0 bg-background z-0">
-        <div className="absolute inset-0 cyber-grid opacity-40" />
+        <div className="absolute inset-0 cyber-grid opacity-50" />
       </div>
 
-      {/* --- REFINED NAVBAR --- */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-black/85 backdrop-blur-lg border-b border-yellow-500/30">
-        <div className="container mx-auto px-4 h-16 sm:h-24 flex items-center justify-between">
+      {/* --- NAVBAR --- */}
+      <div className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/30">
+        <div className="container mx-auto px-3 sm:px-6 py-2 flex items-center justify-between">
           
-          {/* Left Side Logos */}
-          <div className="flex items-center gap-3 sm:gap-6">
+          {/* Left Side: Increased Logo Sizes */}
+          <div className="flex items-center gap-2 sm:gap-4">
             <img
               src="/MITS_LOGO.png"
               alt="MITS Logo"
-              className="h-10 sm:h-16 w-auto object-contain"
+              className="h-12 sm:h-20 w-auto object-contain" 
             />
-            <div className="h-8 sm:h-12 w-[1px] bg-yellow-500/30 hidden xs:block" />
             <img
               src="/MITS_Deemed.png"
               alt="MITS Deemed University"
-              className="h-8 sm:h-14 w-auto object-contain"
+              className="h-10 sm:h-16 w-auto object-contain"
             />
           </div>
 
-          {/* Right Side Logo - MADE CIRCULAR HERE */}
+          {/* Right Side: PERFECT CIRCLE SHAPE */}
           <div className="flex items-center">
-            <div className="h-12 w-12 sm:h-20 sm:w-20 rounded-full border-2 border-yellow-500/50 overflow-hidden shadow-[0_0_15px_rgba(255,215,0,0.3)]">
-              <img
+            <div className="h-14 w-14 sm:h-20 sm:w-20 rounded-full overflow-hidden border border-yellow-500/50">
+                <img
                 src="/27_years.jpeg"
                 alt="27 Years of Excellence"
                 className="h-full w-full object-cover"
-              />
+                />
             </div>
           </div>
         </div>
-      </nav>
+      </div>
 
       {/* Hero Content */}
-      <div className="container relative z-10 px-4 md:px-6 text-center mt-24">
+      <div className="container relative z-10 px-4 md:px-6 text-center mt-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
           {/* Title */}
-          <h1 className="font-orbitron text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-gradient-gold glow-gold mb-6">
+          <h1 className="font-orbitron text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-gold glow-gold mb-4">
             {typedText}
-            {!typingComplete && <span className="animate-pulse text-yellow-500">|</span>}
+            {!typingComplete && <span className="text-primary">|</span>}
           </h1>
 
           {/* Subtitle */}
-          <p className="font-rajdhani text-sm sm:text-lg md:text-2xl mb-4 text-foreground/80 tracking-[0.2em] uppercase">
+          <p className="font-rajdhani text-base sm:text-lg md:text-3xl mb-6 text-foreground/70 tracking-widest">
             {subtitle}
           </p>
 
-          <p className="font-orbitron text-lg sm:text-xl mb-2 text-gradient-gold font-semibold">
+          <p className="font-orbitron text-lg sm:text-xl mb-6 text-gradient-gold font-semibold">
             One Day National Level Symposium
           </p>
 
-          <p className="text-xl sm:text-3xl font-bold text-yellow-400 mb-10 tracking-widest">
-            FEBRUARY 26, 2026
+          <p className="text-lg sm:text-2xl text-yellow-300 mb-6">
+            February 26, 2026
           </p>
 
-          {/* Timer Grid */}
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-12">
+          {/* Timer */}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-6 mb-8">
             {[
               { label: 'DAYS', value: timeLeft.days },
               { label: 'HOURS', value: timeLeft.hours },
               { label: 'MINUTES', value: timeLeft.minutes },
               { label: 'SECONDS', value: timeLeft.seconds }
-            ].map((item) => (
+            ].map(item => (
               <div
                 key={item.label}
-                className="flex flex-col items-center justify-center
-                  w-20 h-20 sm:w-28 sm:h-28
-                  bg-black/40 backdrop-blur-sm
-                  rounded-lg border border-yellow-500/50
-                  shadow-[0_0_15px_rgba(255,215,0,0.15)]"
+                className="px-3 py-2 sm:px-5 sm:py-4 bg-black/60 rounded-xl border border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] min-w-[80px]"
               >
-                <span className="text-2xl sm:text-4xl font-bold text-yellow-400">
+                <div className="text-xl sm:text-3xl font-bold text-yellow-300">
                   {String(item.value).padStart(2, '0')}
-                </span>
-                <span className="text-[10px] sm:text-xs text-foreground/60 tracking-tighter">
+                </div>
+                <div className="text-xs text-foreground/70 tracking-wider">
                   {item.label}
-                </span>
+                </div>
               </div>
             ))}
           </div>
 
-          {/* Call to Action */}
-          <motion.div 
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="text-xl sm:text-2xl text-yellow-300 font-bold mb-8 tracking-widest"
-          >
+          {/* Registration Open */}
+          <motion.div className="text-xl sm:text-2xl text-yellow-300 mb-6">
             REGISTRATION OPEN
           </motion.div>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8">
+          {/* Event Buttons - BOTH MATCHING NOW */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button
               onClick={scrollToTechnical}
-              className="px-8 py-3 bg-yellow-500 hover:bg-yellow-400 text-black rounded-sm font-bold uppercase transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(255,215,0,0.3)]"
+              className="px-6 sm:px-10 py-2 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-300 transition-colors"
             >
               Technical Events
             </button>
 
             <button
               onClick={scrollToNonTechnical}
-              className="px-8 py-3 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black rounded-sm font-bold uppercase transition-all duration-300 transform hover:scale-105"
+              className="px-6 sm:px-10 py-2 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-300 transition-colors"
             >
               Non-Technical Events
             </button>
