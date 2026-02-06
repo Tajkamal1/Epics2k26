@@ -16,8 +16,6 @@ const HeroSection = () => {
   const subtitle = 'Organized by CSE (Cyber Security) Department';
   const eventDate = new Date('2026-02-26T09:00:00');
 
-  /* ---------------- effects ---------------- */
-
   useEffect(() => {
     const contentTimer = setTimeout(() => setShowContent(true), 100);
     return () => clearTimeout(contentTimer);
@@ -35,7 +33,7 @@ const HeroSection = () => {
         clearInterval(typingInterval);
         setTypingComplete(true);
       }
-    }, 100);
+    }, 120);
 
     return () => clearInterval(typingInterval);
   }, [showContent]);
@@ -57,84 +55,83 @@ const HeroSection = () => {
 
     calculateTimeLeft();
     const timer = setInterval(calculateTimeLeft, 1000);
-
     return () => clearInterval(timer);
   }, []);
 
-  /* ---------------- handlers ---------------- */
-
-  const handleRegisterClick = () => {
-    const section = document.getElementById('events');
-    section?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToTechnical = () => {
+    document.getElementById('technical-events')?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
 
-  /* ---------------- UI ---------------- */
+  const scrollToNonTechnical = () => {
+    document.getElementById('non-technical-events')?.scrollIntoView({
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* ==================== FIXED NAVBAR WITH LOGOS ==================== */}
-      <div className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-yellow-500/30">
-        <div className="container mx-auto px-4 sm:px-6 py-2 flex items-center justify-between">
-
-          {/* LEFT LOGOS */}
-          <div className="flex items-center gap-2 sm:gap-4">
-            <img
-              src="/MITS_LOGO.png"
-              alt="MITS Logo"
-              className="h-12 sm:h-14 w-auto object-contain"
-            />
-
-            <img
-              src="/MITS_Deemed.png"
-              alt="MITS Deemed University"
-              className="h-10 sm:h-12 w-auto object-contain"
-            />
-          </div>
-
-          {/* RIGHT LOGO */}
-          <div>
-            <img
-              src="/27_years.jpeg"
-              alt="27 Years of Excellence"
-              className="h-12 sm:h-16 w-auto object-contain"
-            />
-          </div>
-
-        </div>
-      </div>
-
-      {/* ==================== BACKGROUND ==================== */}
+      {/* Background */}
       <div className="fixed inset-0 bg-background z-0">
         <div className="absolute inset-0 cyber-grid opacity-50" />
       </div>
 
-      {/* ==================== HERO CONTENT ==================== */}
+      {/* NAVBAR WITH LOGOS ONLY */}
+      <div className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/30">
+        <div className="container mx-auto px-3 sm:px-6 py-2 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <img
+              src="/MITS_LOGO.png"
+              alt="MITS Logo"
+              className="h-10 sm:h-14 w-auto"
+            />
+            <img
+              src="/MITS_Deemed.png"
+              alt="MITS Deemed University"
+              className="h-9 sm:h-12 w-auto"
+            />
+          </div>
+
+          <div>
+            <img
+              src="/27_years.jpeg"
+              alt="27 Years of Excellence"
+              className="h-12 sm:h-16 w-auto"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Content */}
       <div className="container relative z-10 px-4 md:px-6 text-center mt-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          {/* Title */}
-          <h1 className="font-orbitron text-5xl md:text-8xl font-bold text-gradient-gold glow-gold mb-4">
+          <h1 className="font-orbitron text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-gold glow-gold mb-4">
             {typedText}
             {!typingComplete && <span className="text-primary">|</span>}
           </h1>
 
-          {/* Subtitle */}
-          <p className="font-rajdhani text-lg md:text-3xl text-foreground/70 tracking-widest mb-6">
+          <p className="font-rajdhani text-base sm:text-lg md:text-3xl mb-6 text-foreground/70 tracking-widest">
             {subtitle}
           </p>
 
-          <p className="font-orbitron text-lg md:text-xl text-gradient-gold font-semibold mb-8">
+          <p className="font-orbitron text-lg sm:text-xl mb-6 text-gradient-gold font-semibold">
             One Day National Level Symposium
           </p>
 
-          {/* FLEX BASED RESPONSIVE COUNTDOWN TIMER */}
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-10 px-2 sm:px-0 mx-2 sm:mx-0">
+          <p className="text-lg sm:text-2xl text-yellow-300 mb-6">
+            February 26, 2026
+          </p>
+
+          {/* Timer with GOLD styling */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-8 px-2 sm:px-0">
             {[
               { label: 'DAYS', value: timeLeft.days },
               { label: 'HOURS', value: timeLeft.hours },
@@ -156,7 +153,6 @@ const HeroSection = () => {
                 <div className="font-orbitron text-2xl sm:text-3xl font-bold text-gradient-gold">
                   {String(item.value).padStart(2, '0')}
                 </div>
-
                 <div className="font-rajdhani text-[10px] sm:text-xs text-foreground/70 tracking-wider">
                   {item.label}
                 </div>
@@ -164,32 +160,27 @@ const HeroSection = () => {
             ))}
           </div>
 
-          {/* Register Button */}
-          <motion.button
-            onClick={handleRegisterClick}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            animate={{
-              boxShadow: [
-                '0 0 15px rgba(255,215,0,0.4)',
-                '0 0 35px rgba(255,215,0,0.8)',
-                '0 0 15px rgba(255,215,0,0.4)',
-              ],
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="
-              px-8 sm:px-12 py-3 sm:py-4
-              font-orbitron text-lg sm:text-xl
-              bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
-              text-black
-              rounded-full
-              uppercase
-              tracking-widest
-              border border-yellow-200
-            "
-          >
-            Register Now
-          </motion.button>
+          {/* Registration Open */}
+          <motion.div className="text-xl sm:text-2xl text-yellow-300 mb-6">
+            REGISTRATION OPEN
+          </motion.div>
+
+          {/* Event Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <button
+              onClick={scrollToTechnical}
+              className="px-6 sm:px-10 py-2 bg-yellow-400 text-black rounded-full font-semibold"
+            >
+              Technical Events
+            </button>
+
+            <button
+              onClick={scrollToNonTechnical}
+              className="px-6 sm:px-10 py-2 bg-yellow-400 text-black rounded-full font-semibold"
+            >
+              Non-Technical Events
+            </button>
+          </div>
         </motion.div>
       </div>
     </section>
