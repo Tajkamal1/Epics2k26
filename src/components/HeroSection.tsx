@@ -95,9 +95,9 @@ const HeroSection = () => {
             />
           </div>
 
-          {/* Right Side: Circular Image with highlighted border */}
+          {/* Right Side: Circular Image with border */}
           <div className="flex items-center">
-            <div className="h-14 w-14 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 rounded-full overflow-hidden border-4 border-yellow-400 shadow-[0_0_15px_rgba(255,215,0,0.6)]">
+            <div className="h-14 w-14 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 rounded-full overflow-hidden border border-yellow-500/50">
               <img
                 src="/27_years.jpeg"
                 alt="27 Years of Excellence"
