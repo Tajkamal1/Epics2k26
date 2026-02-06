@@ -16,6 +16,7 @@ const HeroSection = () => {
   const subtitle = 'Organized by Department of CSE (Cyber Security)';
   const eventDate = new Date('2026-02-26T09:00:00');
 
+  /* ---------------- effects ---------------- */
   useEffect(() => {
     const contentTimer = setTimeout(() => setShowContent(true), 100);
     return () => clearTimeout(contentTimer);
@@ -75,12 +76,12 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background */}
+      {/* Background Grid */}
       <div className="fixed inset-0 bg-background z-0">
         <div className="absolute inset-0 cyber-grid opacity-50" />
       </div>
 
-      {/* NAVBAR WITH LOGOS ONLY */}
+      {/* Navbar with Logos */}
       <div className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/30">
         <div className="container mx-auto px-3 sm:px-6 py-2 flex items-center justify-between">
           <div className="flex items-center gap-2 sm:gap-4">
@@ -113,11 +114,13 @@ const HeroSection = () => {
           animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          {/* Title */}
           <h1 className="font-orbitron text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-gold glow-gold mb-4">
             {typedText}
             {!typingComplete && <span className="text-primary">|</span>}
           </h1>
 
+          {/* Subtitle */}
           <p className="font-rajdhani text-base sm:text-lg md:text-3xl mb-6 text-foreground/70 tracking-widest">
             {subtitle}
           </p>
@@ -130,8 +133,8 @@ const HeroSection = () => {
             February 26, 2026
           </p>
 
-          {/* Timer with GOLD styling */}
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-8 px-2 sm:px-0">
+          {/* Timer - Second code boxes + First code gold border */}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-6 mb-8">
             {[
               { label: 'DAYS', value: timeLeft.days },
               { label: 'HOURS', value: timeLeft.hours },
@@ -141,19 +144,18 @@ const HeroSection = () => {
               <div
                 key={item.label}
                 className="
-                  px-3 py-3 sm:px-5 sm:py-4
-                  bg-secondary/60
-                  backdrop-blur-md
-                  border border-primary/40
+                  px-3 py-2 sm:px-5 sm:py-4
+                  bg-black/60
                   rounded-xl
+                  border border-yellow-400
                   shadow-[0_0_20px_rgba(255,215,0,0.25)]
                   min-w-[80px]
                 "
               >
-                <div className="font-orbitron text-2xl sm:text-3xl font-bold text-gradient-gold">
+                <div className="text-xl sm:text-3xl font-bold text-yellow-300">
                   {String(item.value).padStart(2, '0')}
                 </div>
-                <div className="font-rajdhani text-[10px] sm:text-xs text-foreground/70 tracking-wider">
+                <div className="text-xs text-foreground/70 tracking-wider">
                   {item.label}
                 </div>
               </div>
